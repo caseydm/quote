@@ -16,8 +16,9 @@ security = Security(app, user_datastore)
 # Create a user to test with
 @app.before_first_request
 def create_user():
+    db.drop_all()
     db.create_all()
-    user_datastore.create_user(email='matt@nobien.net', password='password')
+    user_datastore.create_user(email='casey@gmail.com', password='password')
     db.session.commit()
 
 
