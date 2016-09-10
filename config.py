@@ -8,6 +8,5 @@ SECURITY_REGISTERABLE = True
 # sendgrid setup
 MAIL_SERVER = 'smtp.sendgrid.net'
 MAIL_PORT = '587'
-MAIL_USE_SSL = False
-MAIL_USERNAME = 'apikey'
+MAIL_USERNAME = os.environ.get('SENDGRID_USERNAME')
 MAIL_PASSWORD = os.environ.get('SENDGRID_PASSWORD')
