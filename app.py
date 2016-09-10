@@ -1,12 +1,11 @@
 from flask import Flask, render_template
-from flask_sqlalchemy import SQLAlchemy
 from flask.ext.security import Security, SQLAlchemyUserDatastore, login_required
-from models import User, Role
+from models import User, Role, db
 
 # app setup
 app = Flask(__name__)
 app.config.from_object('config')
-db = SQLAlchemy(app)
+db.init_app(app)
 
 
 # Setup Flask-Security
