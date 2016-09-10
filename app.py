@@ -1,14 +1,16 @@
 from flask import Flask, render_template
+from flask_mail import Mail
 from flask.ext.security import Security, SQLAlchemyUserDatastore, login_required
 from models import User, Role, db
 
 # app setup
 app = Flask(__name__)
 app.config.from_object('config')
+mail = Mail(app)
 db.init_app(app)
 
 
-# Setup Flask-Security
+# Flask-Security setup
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
 
