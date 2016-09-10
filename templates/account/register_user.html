@@ -1,0 +1,59 @@
+{% extends 'account/base.html' %}
+
+{% block title %}Register for an Account{% endblock %}
+
+{% block content %}
+
+<body class="theme-default page-signup-alt">
+
+    <!-- Top Nav -->
+    <div class="signup-header">
+        <a href="index.html" class="logo">
+            <strong>Quotes</strong>App
+        </a> <!-- / .logo -->
+        <a href="" class="btn btn-primary">Login</a>
+    </div> <!-- / .header -->
+    <!-- / Top Nav -->
+
+    <!-- Page Header -->
+    <br/>
+    <h1 class="form-header">Register for an Account</h1>
+    <!-- / Page Header -->
+    <!-- Form -->
+    <form class="panel" role="form" method="post" onsubmit="button.disabled = true; return true">
+    {{ register_user_form.hidden_tag() }}
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <div class="alert alert-danger">
+                {% for message in messages %}
+                  {{ message }}
+                {% endfor %}
+              </div>
+            {% endif %}
+        {% endwith %}
+        {% if register_user_form.errors %}
+            <div class="alert alert-danger">
+                {% for field_name, field_errors in register_user_form.errors|dictsort if field_errors %}
+                    {% for error in field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="form-group">
+            {{ register_user_form.email(class='form-control input-lg', placeholder='Email', required='true', type='email') }}
+        </div>
+        <div class="form-group">
+            {{ register_user_form.password(class='form-control input-lg', placeholder='Password', required='true', type='password') }}
+        </div>
+        <div class="form-group">
+            {{ register_user_form.password_again(class='form-control input-lg', placeholder='Password (again)', required='true') }}
+        </div> <!-- / Password -->
+
+        <div class="form-actions">
+            <input type="submit" value="Sign Up" name="button" class="btn btn-primary btn-lg btn-block">
+        </div>
+    </form>
+    <!-- / Form -->
+
+{% endblock %}

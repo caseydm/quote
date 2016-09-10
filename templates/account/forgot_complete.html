@@ -1,0 +1,31 @@
+{% extends 'account/base.html' %}
+
+{% block title %}Password Change Complete{% endblock %}
+
+{% block content %}
+<body class="theme-default page-signin-alt">
+<meta http-equiv="refresh" content="5; url={{ config['STORMPATH_REDIRECT_URL'] }}" />
+    
+    <!-- Top Nav -->
+    <div class="signin-header">
+        <a href="index.html" class="logo">
+            <strong>Photog</strong>App
+        </a> <!-- / .logo -->
+    </div> <!-- / .header -->
+    <!-- / Top Nav -->
+    <!-- Page Header -->
+    <br/>
+    <h1 class="form-header">Password Change Complete</h1>
+    <!-- / Page Header -->
+    <div class="panel">
+        <div class="panel-body">
+            <p>
+            Your password has been changed, and you have been logged into
+                your account.  You will be redirected back to the site in 5
+                seconds.
+            </p>
+        </div>
+    </div>
+    
+</body>
+{% endblock %}

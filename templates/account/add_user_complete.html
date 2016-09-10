@@ -1,0 +1,34 @@
+{% extends 'account/base.html' %}
+
+{% block title %}Account Created{% endblock %}
+
+{% block content %}
+<body class="theme-default page-signin-alt">
+<meta http-equiv="refresh" content="5; url={{ config['STORMPATH_REDIRECT_URL'] }}" />
+    
+    <!-- Top Nav -->
+    <div class="signin-header">
+        <a href="index.html" class="logo">
+            <strong>Photog</strong>App
+        </a> <!-- / .logo -->
+    </div> <!-- / .header -->
+    <!-- / Top Nav -->
+    <!-- Page Header -->
+    <br/>
+    <h1 class="form-header">Account Created!</h1>
+    <!-- / Page Header -->
+    <div class="panel">
+        <div class="panel-heading">
+            <span class="panel-title">Confirmation</span>
+        </div>
+        <div class="panel-body">
+            <p>
+            Your account was created, and you have been logged into
+                your account.  You will be redirected back to the site in 5
+                seconds.
+            </p>
+        </div>
+    </div>
+    
+</body>
+{% endblock %}

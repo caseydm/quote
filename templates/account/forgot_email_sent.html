@@ -1,0 +1,30 @@
+{% extends 'account/base.html' %}
+
+{% block title %}Password Reset Email Sent{% endblock %}
+
+{% block content %}
+<body class="theme-default page-signin-alt">
+    
+    <!-- Top Nav -->
+    <div class="signin-header">
+        <a href="index.html" class="logo">
+            <strong>Photog</strong>App
+        </a> <!-- / .logo -->
+    </div> <!-- / .header -->
+    <!-- / Top Nav -->
+
+    <!-- Page Header -->
+    <br/>
+    <h1 class="form-header">Password Reset Email Sent</h1>
+    <!-- / Page Header -->
+    <div class="panel">
+        <div class="panel-body">
+            <p>
+            We have sent a password reset email to your email
+            address: <b>{{ user.email }}</b>.
+            </p>
+        </div>
+    </div>
+    
+</body>
+{% endblock %}
