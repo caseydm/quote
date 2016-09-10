@@ -1,4 +1,4 @@
-{% extends 'account/base.html' %}
+{% extends 'security/base.html' %}
 
 {% block title %}Register for an Account{% endblock %}
 
@@ -9,7 +9,7 @@
     <!-- Top Nav -->
     <div class="signup-header">
         <a href="index.html" class="logo">
-            <strong>Quotes</strong>App
+            <strong>Quotes</strong> App
         </a> <!-- / .logo -->
         <a href="" class="btn btn-primary">Login</a>
     </div> <!-- / .header -->
@@ -47,7 +47,7 @@
             {{ register_user_form.password(class='form-control input-lg', placeholder='Password', required='true', type='password') }}
         </div>
         <div class="form-group">
-            {{ register_user_form.password_again(class='form-control input-lg', placeholder='Password (again)', required='true') }}
+            {{ register_user_form.password_confirm(class='form-control input-lg', placeholder='Password (again)', required='true') }}
         </div> <!-- / Password -->
 
         <div class="form-actions">

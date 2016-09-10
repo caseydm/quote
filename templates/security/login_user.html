@@ -1,4 +1,4 @@
-{% extends 'account/base.html' %}
+{% extends 'security/base.html' %}
 
 {% block title %}Sign In{% endblock %}
 
@@ -7,10 +7,10 @@
     
     <!-- Top Nav -->
     <div class="signin-header">
-        <a href="index.html" class="logo">
-            <strong>Photog</strong>App
+        <a href="/" class="logo">
+            <strong>Quotes</strong> App
         </a> <!-- / .logo -->
-        <a href="{{ url_for('accounts.register') }}" class="btn btn-primary">Sign Up</a>
+        <a href="" class="btn btn-primary">Sign Up</a>
     </div> <!-- / .header -->
     <!-- / Top Nav -->
 
@@ -21,8 +21,8 @@
 
     <div class="panel">
         <!-- Form -->
-        <form method="post">
-            {{ form.hidden_tag() }}
+        <form action="{{ url_for_security('login') }}" method="POST" name="login_user_form">
+            {{ login_user_form.hidden_tag() }}
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                   <div class="alert alert-danger">
@@ -33,11 +33,11 @@
                 {% endif %}
             {% endwith %}
             <div class="form-group">
-                {{ form.login(class='form-control input-lg', placeholder='Email', required='true') }}
+                {{ login_user_form.email(class='form-control input-lg', placeholder='Email', required='true') }}
             </div> <!-- / Email -->
 
             <div class="form-group signin-password">
-                {{ form.password(class='form-control input-lg', placeholder='Password', required='true') }}
+                {{ login_user_form.password(class='form-control input-lg', placeholder='Password', required='true') }}
             </div> <!-- / Password -->
 
             <div class="form-actions">
