@@ -20,7 +20,7 @@ security = Security(app, user_datastore)
 def create_user():
     db.drop_all()
     db.create_all()
-    user_datastore.create_user(email='casey@gmail.com', password='password')
+    user_datastore.create_user(email='caseym@gmail.com', password='password')
     db.session.commit()
 
 

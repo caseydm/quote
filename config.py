@@ -7,6 +7,7 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 # flask-security config
 SECURITY_REGISTERABLE = True
 SECURITY_RECOVERABLE = True
+SECURITY_CHANGEABLE = True
 
 # sendgrid setup
 MAIL_SERVER = 'smtp.sendgrid.net'
