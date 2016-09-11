@@ -1,4 +1,5 @@
 {% extends 'security/base.html' %}
+{% from "security/_macros.html" import error_help %}
 
 {% block title %}Sign In{% endblock %}
 
@@ -34,21 +35,17 @@
 
             <div class="form-group {{ email_error }}">
                 {{ login_user_form.email(class='form-control input-lg', placeholder='Email', required='true') }}
-                {% if login_user_form.email.errors %}
-                    {% for error in login_user_form.email.errors %}
-                        <span class="help-block">{{ error }}</span>
-                    {% endfor %}
-                {% endif %}
+                {{ error_help(login_user_form.email) }}
             </div> <!-- / Email -->
 
             <div class="form-group signin-password {{ password_error }}">
                 {{ login_user_form.password(class='form-control input-lg', placeholder='Password', required='true') }}
-                {% if login_user_form.password.errors %}
-                    {% for error in login_user_form.password.errors %}
-                        <span class="help-block">{{ error }}</span>
-                    {% endfor %}
-                {% endif %}
+                {{ error_help(login_user_form.password) }}
             </div> <!-- / Password -->
+
+            <div class="checkbox">
+                <label>{{ login_user_form.remember() }} Remember Me</label>
+            </div> <!-- / Remember Me -->
 
             <div class="form-actions">
                 <input type="submit" value="Log In" class="btn btn-primary btn-block btn-lg">
