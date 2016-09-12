@@ -18,6 +18,8 @@ def create_app(config_object=ProdConfig):
     mail.init_app(app)
     security.init_app(app, user_datastore)
 
+    return app
+
 app = create_app()
 
 
