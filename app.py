@@ -2,17 +2,23 @@ from flask import Flask, render_template
 from flask_mail import Mail
 from flask.ext.security import Security, SQLAlchemyUserDatastore, login_required
 from models import User, Role, db
+from config import ProdConfig
 
-# app setup
-app = Flask(__name__)
-app.config.from_object('config')
-mail = Mail(app)
-db.init_app(app)
-
-
-# Flask-Security setup
+# extensions
+mail = Mail()
+security = Security()
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
-security = Security(app, user_datastore)
+
+
+# app factory
+def create_app(config_object=ProdConfig):
+    app = Flask(__name__)
+    app.config.from_object(config_object)
+    db.init_app(app)
+    mail.init_app(app)
+    security.init_app(app, user_datastore)
+
+app = create_app()
 
 
 # Create a user to test with
