@@ -1,8 +1,8 @@
 from flask import Flask, render_template
 from flask_mail import Mail
 from flask.ext.security import Security, SQLAlchemyUserDatastore, login_required
-from models import User, Role, db
-from config import ProdConfig
+from quote.models import User, Role, db
+from quote.config import ProdConfig
 
 # extensions
 mail = Mail()
