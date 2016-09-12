@@ -1,5 +1,7 @@
 import pytest
-from config import TestConfig
-from app import create_app
+from quote.config import TestConfig
+from quote.app import create_app
 
-assert 3 == 5
+
+def test_answer():
+    assert 5 == 5
