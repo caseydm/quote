@@ -1,17 +1,11 @@
-from flask import Flask, render_template
-from flask_mail import Mail
-from flask.ext.security import Security, SQLAlchemyUserDatastore
-from quote.models import User, Role, db
+from flask import Flask
 from quote.config import ProdConfig
 from quote import public
-
-mail = Mail()
-security = Security()
-user_datastore = SQLAlchemyUserDatastore(db, User, Role)
+from .extensions import db, mail, security, user_datastore
 
 
-# app factory
 def create_app(config_object=ProdConfig):
+    """Application factory"""
     app = Flask(__name__)
     app.config.from_object(config_object)
     register_extensions(app)

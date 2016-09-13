@@ -1,7 +1,5 @@
 from flask.ext.security import UserMixin, RoleMixin
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
+from quote.database import db
 
 # models
 roles_users = db.Table('roles_users',
