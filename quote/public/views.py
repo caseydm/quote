@@ -7,4 +7,4 @@ blueprint = Blueprint('public', __name__, static_folder='../static')
 
 @blueprint.route('/')
 def home():
-    render_template('public/index.html')
+    return render_template('public/index.html')
