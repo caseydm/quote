@@ -34,7 +34,7 @@ def db(app):
 
     # Explicitly close DB connection
     _db.session.close()
-    # .drop_all()
+    _db.drop_all()
 
 
 @pytest.fixture

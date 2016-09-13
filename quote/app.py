@@ -23,6 +23,11 @@ def create_app(config_object=ProdConfig):
 app = create_app()
 
 
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+
+
 # Create a user to test with
 @app.before_first_request
 def create_user():
@@ -30,12 +35,6 @@ def create_user():
     db.create_all()
     user_datastore.create_user(email='caseym@gmail.com', password='password')
     db.session.commit()
-
-
-@app.route('/')
-@login_required
-def index():
-    return render_template('index.html')
 
 
 if __name__ == '__main__':

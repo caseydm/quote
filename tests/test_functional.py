@@ -1,5 +1,6 @@
 from quote.app import create_app
 from quote.config import ProdConfig
+from flask import url_for
 
 
 def test_production_config():
@@ -12,6 +13,6 @@ def test_production_config():
 def test_require_log_in(client, db, user):
     """Redirect to login page"""
     # try to view home page
-    response = client.get('/', follow_redirects=True)
+    response = client.get(url_for('index'))
 
-    assert b'Log into' in response.data
+    assert b'Hello world!' in response.data
