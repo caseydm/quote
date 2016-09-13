@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_mail import Mail
-from flask.ext.security import Security, SQLAlchemyUserDatastore, login_required
+from flask.ext.security import Security, SQLAlchemyUserDatastore
 from quote.models import User, Role, db
 from quote.config import ProdConfig
 from quote import public

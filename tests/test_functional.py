@@ -13,6 +13,6 @@ def test_production_config():
 def test_require_log_in(client, db, user):
     """Redirect to login page"""
     # try to view home page
-    response = client.get(url_for('index'))
+    response = client.get(url_for('public.home'), follow_redirects=True)
 
-    assert b'Hello world!' in response.data
+    assert b'Log in to your Account' in response.data
