@@ -11,6 +11,7 @@ class Config(object):
     SECURITY_REGISTERABLE = True
     SECURITY_RECOVERABLE = True
     SECURITY_CHANGEABLE = True
+    SECURITY_PASSWORD_HASH = 'bcrypt'
 
     # sendgrid setup
     MAIL_SERVER = 'smtp.sendgrid.net'
