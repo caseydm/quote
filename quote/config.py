@@ -12,6 +12,7 @@ class Config(object):
     SECURITY_RECOVERABLE = True
     SECURITY_CHANGEABLE = True
     SECURITY_PASSWORD_HASH = 'bcrypt'
+    SECURITY_PASSWORD_SALT = os.environ.get('SECURITY_PASSWORD_SALT')
 
     # sendgrid setup
     MAIL_SERVER = 'smtp.sendgrid.net'
