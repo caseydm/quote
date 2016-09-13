@@ -1,5 +1,5 @@
 from flask.ext.security import UserMixin, RoleMixin
-from quote.database import db
+from quote.extensions import db
 
 # models
 roles_users = db.Table('roles_users',
