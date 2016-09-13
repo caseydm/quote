@@ -1,7 +1,7 @@
 from flask import Flask
 from quote.config import ProdConfig
 from quote import public
-from .extensions import db, mail, security, user_datastore
+from quote.extensions import db, mail, security, user_datastore
 
 
 def create_app(config_object=ProdConfig):
@@ -15,9 +15,9 @@ def create_app(config_object=ProdConfig):
 
 def register_extensions(app):
     """Register Flask extensions."""
-    db.init_app(app)
     mail.init_app(app)
     security.init_app(app, user_datastore)
+    db.init_app(app)
     return None
 
 
