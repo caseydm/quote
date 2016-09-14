@@ -1,7 +1,7 @@
 import pytest
 from quote.config import TestConfig
 from quote.app import create_app, user_datastore
-from quote.models import db as _db
+from quote.extensions import db as _db
 from flask_security.utils import encrypt_password
 
 
