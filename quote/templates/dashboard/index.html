@@ -1,0 +1,7 @@
+<p>Dashboard</p>
+<p><a href="/logout">Log out</a>
+
+<p><a href="{{ url_for_security('change_password') }}">Change password</a>
+
+<p>Authenticated? {{ current_user.is_authenticated }}
+<p>User id: {{ current_user.get_id() }}</p>

@@ -1,7 +1,7 @@
 from flask import Flask
 from flask.ext.security import SQLAlchemyUserDatastore
 from quote.config import ProdConfig
-from quote import public
+from quote import public, dashboard
 from quote.extensions import db, mail, security
 from quote.security.models import User, Role
 
@@ -29,6 +29,7 @@ def register_extensions(app):
 def register_blueprints(app):
     """Register Flask blueprints."""
     app.register_blueprint(public.views.blueprint)
+    app.register_blueprint(dashboard.views.blueprint)
     return None
 
 app = create_app()

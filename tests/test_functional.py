@@ -10,9 +10,17 @@ def test_production_config():
     assert app.config['DEBUG'] is False
 
 
-def test_require_log_in(client, db, user):
-    """Redirect to login page"""
-    # try to view home page
-    response = client.get(url_for('public.home'), follow_redirects=True)
+def test_public_home_page(client):
+    """View public home page"""
 
-    assert b'Log in to your Account' in response.data
+    response = client.get(url_for('public.index'))
+
+    assert b'Home Page' in response.data
+
+
+def test_dashboard_redirect(client, db, user):
+    """Redirect to login page"""
+    # try to view dashboard
+    response = client.get(url_for('dashboard.index'), follow_redirects=True)
+
+    assert b'Log in' in response.data
