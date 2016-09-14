@@ -6,7 +6,7 @@ from quote.extensions import db as _db
 from flask_security.utils import encrypt_password
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='class')
 def app():
     """An application for the tests."""
     _app = create_app(TestConfig)
@@ -18,7 +18,7 @@ def app():
     ctx.pop()
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='class')
 def db(app):
     """A database for the tests."""
     _db.app = app
@@ -41,7 +41,7 @@ def client(app, db):
     return app.test_client()
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='class')
 def testapp(app, db):
     """A Webtest app."""
     return TestApp(app)
