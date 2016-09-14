@@ -1,4 +1,5 @@
 import pytest
+from webtest import TestApp
 from quote.config import TestConfig
 from quote.app import create_app, user_datastore
 from quote.extensions import db as _db
@@ -18,8 +19,8 @@ def app():
 
 
 @pytest.fixture(scope='session')
-def client(request, app):
-    """Flask test client"""
+def db(app):
+    """A database for the tests."""
     _db.app = app
     with app.app_context():
         _db.create_all()
@@ -27,10 +28,20 @@ def client(request, app):
             email='caseym@gmail.com', password=encrypt_password('password')
         )
         _db.session.commit()
+    yield _db
 
-    def teardown():
-        _db.session.close()
-        _db.drop_all()
+    # Explicitly close DB connection
+    _db.session.close()
+    _db.drop_all()
 
-    request.addfinalizer(teardown)
+
+@pytest.fixture(scope='session')
+def client(app, db):
+    """Flask test client"""
     return app.test_client()
+
+
+@pytest.fixture(scope='session')
+def testapp(app, db):
+    """A Webtest app."""
+    return TestApp(app)
