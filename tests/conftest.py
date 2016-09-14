@@ -35,7 +35,7 @@ def db(app):
     _db.drop_all()
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='class')
 def client(app, db):
     """Flask test client"""
     return app.test_client()

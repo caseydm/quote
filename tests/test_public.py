@@ -1,6 +1,6 @@
-def test_public_home_page(testapp):
+def test_public_home_page(client):
     """View public home page"""
 
-    response = testapp.get('/')
+    response = client.get('/')
 
-    assert b'Home Page' in response
+    assert b'Home Page' in response.data
