@@ -1,7 +1,12 @@
 from flask import Flask
+from flask.ext.security import SQLAlchemyUserDatastore
 from quote.config import ProdConfig
 from quote import public
-from quote.extensions import db, mail, security, user_datastore
+from quote.extensions import db, mail, security
+from quote.security.models import User, Role
+
+# security setup
+user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 
 
 def create_app(config_object=ProdConfig):
@@ -29,14 +34,13 @@ def register_blueprints(app):
 app = create_app()
 
 
-# Create a user to test with
 @app.before_first_request
 def create_user():
+    """Create initial user"""
     db.drop_all()
     db.create_all()
     user_datastore.create_user(email='caseym@gmail.com', password='password')
     db.session.commit()
-
 
 if __name__ == '__main__':
     app.run()
