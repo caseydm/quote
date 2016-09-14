@@ -5,7 +5,7 @@ from quote.extensions import db as _db
 from flask_security.utils import encrypt_password
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope='session')
 def app():
     """An application for the tests."""
     _app = create_app(TestConfig)
@@ -17,29 +17,20 @@ def app():
     ctx.pop()
 
 
-@pytest.fixture(scope='function')
-def client(app):
+@pytest.fixture(scope='session')
+def client(request, app):
     """Flask test client"""
-    return app.test_client()
-
-
-@pytest.fixture(scope='function')
-def db(app):
-    """A database for the tests."""
     _db.app = app
     with app.app_context():
         _db.create_all()
+        user_datastore.create_user(
+            email='caseym@gmail.com', password=encrypt_password('password')
+        )
+        _db.session.commit()
 
-    yield _db
+    def teardown():
+        _db.session.close()
+        _db.drop_all()
 
-    # Explicitly close DB connection
-    _db.session.close()
-    _db.drop_all()
-
-
-@pytest.fixture
-def user(db):
-    """A user for the tests."""
-    user = user_datastore.create_user(email='caseym@gmail.com', password=encrypt_password('password'))
-    db.session.commit()
-    return user
+    request.addfinalizer(teardown)
+    return app.test_client()
