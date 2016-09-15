@@ -2,6 +2,7 @@
 """
     Tests flask-security registration and login functionality
 """
+from quote.app import user_datastore
 
 
 class TestViewPages:
@@ -53,6 +54,10 @@ class TestRegistration:
 
         assert response.status_code == 200
         assert b'<p>Dashboard</p>' in response
+
+    def test_user_role_is_subscriber(self, testapp):
+        user = user_datastore.get_user('joe@example.com')
+        assert user.has_role('subscriber') == True
 
 
 class TestAnonRedirects:
