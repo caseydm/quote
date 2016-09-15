@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+"""
+    Test fixtures and configuration
+"""
+
 import pytest
 from webtest import TestApp
 from quote.config import TestConfig
@@ -25,7 +30,7 @@ def db(app):
     with app.app_context():
         _db.create_all()
         user_datastore.create_user(
-            email='caseym@gmail.com', password=encrypt_password('password')
+            email='gary@example.com', password=encrypt_password('password')
         )
         _db.session.commit()
     yield _db
@@ -36,12 +41,12 @@ def db(app):
 
 
 @pytest.fixture(scope='class')
-def client(app, db):
-    """Flask test client"""
-    return app.test_client()
-
-
-@pytest.fixture(scope='class')
 def testapp(app, db):
     """A Webtest app."""
     return TestApp(app)
+
+
+@pytest.fixture(scope='class')
+def client(app, db):
+    """Flask test client"""
+    return app.test_client()

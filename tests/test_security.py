@@ -1,18 +1,21 @@
+# -*- coding: utf-8 -*-
+"""
+    Tests flask-security registration and login functionality
+"""
+
+
 class TestViewPages:
     # view pages
     def test_view_register_page(self, testapp):
         response = testapp.get('/register')
-
         assert b'Register for an Account' in response
 
     def test_view_login_page(self, testapp):
         response = testapp.get('/login')
-
         assert b'Log in' in response
 
     def test_view_forgot_password_page(self, testapp):
         response = testapp.get('/reset')
-
         assert b'Recover your Password' in response
 
 
@@ -54,8 +57,33 @@ class TestRegistration:
 
 class TestAnonRedirects:
     def test_dashboard_redirect(self, testapp):
-        """Redirect to login page"""
         # try to view dashboard with anonymous user
         response = testapp.get('/dashboard').follow()
+        assert b'Please log in to access this page.' in response
 
-        assert b'Log in to your Account' in response
+    def test_change_password_redirect(self, testapp):
+        # try to view change password page with anonymous user
+        response = testapp.get('/change').follow()
+        assert b'Please log in to access this page.' in response
+
+
+class TestLogin:
+    def test_login_wrong_password(self, testapp):
+        response = testapp.get('/login')
+
+        form = response.form
+        form['email'] = 'gary@example.com'
+        form['password'] = 'wrong_password'
+        response = form.submit()
+
+        assert b'Invalid password' in response
+
+    def test_login_correct_password(self, testapp):
+        response = testapp.get('/login')
+
+        form = response.form
+        form['email'] = 'gary@example.com'
+        form['password'] = 'password'
+        response = form.submit().follow()
+
+        assert b'<p>Dashboard</p>' in response
