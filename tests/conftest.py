@@ -50,3 +50,11 @@ def testapp(app, db):
 def client(app, db):
     """Flask test client"""
     return app.test_client()
+
+
+@pytest.fixture(scope='class')
+def client_loggedin(app, db):
+    client = app.test_client()
+    data = dict(email='gary@example.com', password='password', remember='y')
+    client.post('/login', data=data)
+    return client
