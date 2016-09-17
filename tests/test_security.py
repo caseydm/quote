@@ -53,7 +53,7 @@ class TestRegistration:
         response = form.submit().follow()
 
         assert response.status_code == 200
-        assert b'<p>Dashboard</p>' in response
+        assert b'<h5 class="panel-title">Dashboard</h5>' in response
 
     def test_user_role_is_subscriber(self, testapp):
         user = user_datastore.get_user('joe@example.com')
@@ -91,4 +91,4 @@ class TestLogin:
         form['password'] = 'password'
         response = form.submit().follow()
 
-        assert b'<p>Dashboard</p>' in response
+        assert b'<h5 class="panel-title">Dashboard</h5>' in response
