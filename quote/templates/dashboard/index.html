@@ -1,3 +1,6 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
 <p>Dashboard</p>
 <p><a href="/logout">Log out</a>
 
@@ -5,3 +8,4 @@
 
 <p>Authenticated? {{ current_user.is_authenticated }}
 <p>User id: {{ current_user.get_id() }}</p>
+ {% endblock %}
