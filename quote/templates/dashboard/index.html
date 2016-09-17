@@ -1,11 +1,150 @@
 {% extends 'dashboard/base.html' %}
 
 {% block content %}
-<p>Dashboard</p>
-<p><a href="/logout">Log out</a>
+<!-- Main content -->
 
-<p><a href="{{ url_for_security('change_password') }}">Change password</a>
+<!-- Simple panel -->
+<div class="panel panel-flat">
+    <div class="panel-heading">
+        <h5 class="panel-title">Dashboard</h5>
+        <div class="heading-elements">
+            <ul class="icons-list">
+                <li><a data-action="collapse"></a></li>
+            </ul>
+        </div>
+    </div>
 
-<p>Authenticated? {{ current_user.is_authenticated }}
-<p>User id: {{ current_user.get_id() }}</p>
+    <div class="panel-body">
+        <p><a href="/logout">Log out</a>
+
+        <p><a href="{{ url_for_security('change_password') }}">Change password</a>
+
+        <p>Authenticated? {{ current_user.is_authenticated }}
+        <p>User id: {{ current_user.get_id() }}</p>
+        <h6 class="text-semibold">Start your development with no hassle!</h6>
+        <p class="content-group">Common problem of templates is that all code is deeply integrated into the core. This limits your freedom in decreasing amount of code, i.e. it becomes pretty difficult to remove unnecessary code from the project. Limitless allows you to remove unnecessary and extra code easily just by removing the path to specific LESS file with component styling. All plugins and their options are also in separate files. Use only components you actually need!</p>
+    </div>
+</div>
+<!-- /simple panel -->
+
+
+
+<!-- Grid -->
+<div class="row">
+    <div class="col-md-6">
+
+        <!-- Horizontal form -->
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h5 class="panel-title">Horizontal form</h5>
+                <div class="heading-elements">
+                    <ul class="icons-list">
+                        <li><a data-action="collapse"></a></li>
+                        <li><a data-action="close"></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <form class="form-horizontal" action="#">
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">Text input</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">Password</label>
+                        <div class="col-lg-10">
+                            <input type="password" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">Select</label>
+                        <div class="col-lg-10">
+                            <select name="select" class="form-control">
+                                <option value="opt1">Basic select</option>
+                                <option value="opt2">Option 2</option>
+                                <option value="opt3">Option 3</option>
+                                <option value="opt4">Option 4</option>
+                                <option value="opt5">Option 5</option>
+                                <option value="opt6">Option 6</option>
+                                <option value="opt7">Option 7</option>
+                                <option value="opt8">Option 8</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">Textarea</label>
+                        <div class="col-lg-10">
+                            <textarea rows="5" cols="5" class="form-control" placeholder="Default textarea"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary">Submit form <i class="icon-arrow-right14 position-right"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /horizotal form -->
+
+    </div>
+
+    <div class="col-md-6">
+
+        <!-- Vertical form -->
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h5 class="panel-title">Vertical form</h5>
+                <div class="heading-elements">
+                    <ul class="icons-list">
+                        <li><a data-action="collapse"></a></li>
+                        <li><a data-action="close"></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <form action="#">
+                    <div class="form-group">
+                        <label>Text input</label>
+                        <input type="text" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select</label>
+                        <select name="select" class="form-control">
+                            <option value="opt1">Basic select</option>
+                            <option value="opt2">Option 2</option>
+                            <option value="opt3">Option 3</option>
+                            <option value="opt4">Option 4</option>
+                            <option value="opt5">Option 5</option>
+                            <option value="opt6">Option 6</option>
+                            <option value="opt7">Option 7</option>
+                            <option value="opt8">Option 8</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Textarea</label>
+                        <textarea rows="4" cols="4" class="form-control" placeholder="Default textarea"></textarea>
+                    </div>
+
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary">Submit form <i class="icon-arrow-right14 position-right"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /vertical form -->
+
+    </div>
+</div>
+<!-- /grid -->
+
+<!-- /main content -->
  {% endblock %}
