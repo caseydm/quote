@@ -1,29 +1,26 @@
 <!-- Main navbar -->
-<div class="navbar navbar-inverse navbar-transparent">
+<div class="navbar navbar-inverse bg-blue-600">
+    
+    <!-- Navbar header -->
     <div class="navbar-header">
         <a class="navbar-brand" href="{{ url_for('dashboard.index') }}"><img src="{{ url_for('static', filename='dashboard/images/logo_light.png') }}" alt=""></a>
 
         <ul class="nav navbar-nav pull-right visible-xs-block">
-            <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
-            <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+            <li><a data-toggle="collapse" data-target="#navbar-demo3" class="collapsed" aria-expanded="false"><i class="icon-grid3"></i></a></li>
         </ul>
     </div>
+    <!-- /navbar header -->
 
-    <div class="navbar-collapse collapse" id="navbar-mobile">
+    <!-- Navbar menu -->
+    <div class="navbar-collapse collapse" id="navbar-demo3" aria-expanded="false">
 
+        <!-- Right nav -->
         <ul class="nav navbar-nav navbar-right">
-
-            <li>
-                <a href="#">
-                    <i class="icon-cog3"></i>
-                    <span class="visible-xs-inline-block position-right">Icon link</span>
-                </a>                        
-            </li>
 
             <li class="dropdown dropdown-user">
                 <a class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="{{ url_for('static', filename='dashboard/images/image.png') }}" alt="">
-                    <span>Victoria</span>
+                    <i class="icon-user position-left"></i>
+                    <span> Victoria</span>
                     <i class="caret"></i>
                 </a>
 
@@ -34,6 +31,9 @@
                 </ul>
             </li>
         </ul>
+        <!-- /right nav -->
+
     </div>
+    <!-- /navbar menu -->
 </div>
 <!-- /main navbar -->
