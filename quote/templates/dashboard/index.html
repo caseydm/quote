@@ -9,10 +9,10 @@
 <div class="page-header">
   <div class="btn-toolbar pull-right">
     <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="icon-plus2"></i> Add New <span class="caret"></span></button>
+        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="icon-plus2"></i> Add New <span class="caret"></span></button>
         <ul class="dropdown-menu dropdown-menu-right">
-            <li><a href="#"> Client</a></li>
-            <li><a href="#"> Estimate</a></li>
+            <li><a href="{{ url_for('dashboard.new_client') }}"> Client</a></li>
+            <li><a href="{{ url_for('dashboard.new_estimate') }}"> Estimate</a></li>
             <li><a href="#"> Invoice</a></li>
         </ul>
     </div>
@@ -26,6 +26,11 @@
 <div class="panel panel-white">
     <div class="panel-heading">
         <h5 class="panel-title"><span class="text-semibold">Estimates</span></h5>
+        <div class="heading-elements">
+            <ul class="icons-list">
+                <li><a data-action="collapse"></a></li>
+            </ul>
+        </div>
     </div>
 
     <div class="table-responsive">
@@ -67,6 +72,11 @@
 <div class="panel panel-white">
     <div class="panel-heading">
         <h5 class="panel-title"><span class="text-semibold">Invoices</span></h5>
+        <div class="heading-elements">
+            <ul class="icons-list">
+                <li><a data-action="collapse"></a></li>
+            </ul>
+        </div>
     </div>
 
     <div class="table-responsive">

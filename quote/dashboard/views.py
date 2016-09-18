@@ -16,3 +16,9 @@ def index():
 @login_required
 def new_estimate():
     return render_template('dashboard/new_estimate.html')
+
+
+@blueprint.route('/dashboard/clients/new')
+@login_required
+def new_client():
+    return render_template('dashboard/new_client.html')
