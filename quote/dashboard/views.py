@@ -10,3 +10,9 @@ blueprint = Blueprint('dashboard', __name__, static_folder='../static')
 @login_required
 def index():
     return render_template('dashboard/index.html')
+
+
+@blueprint.route('/dashboard/estimates/new')
+@login_required
+def new_estimate():
+    return render_template('dashboard/new_estimate.html')
