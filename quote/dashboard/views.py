@@ -22,3 +22,9 @@ def new_estimate():
 @login_required
 def new_client():
     return render_template('dashboard/new_client.html')
+
+
+@blueprint.route('/dashboard/products')
+@login_required
+def list_products():
+    return render_template('dashboard/products.html')

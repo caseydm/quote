@@ -1,0 +1,65 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<!-- Main content -->
+
+<div class="page-header">
+  <h2>Products</h2>
+</div>
+
+<!-- Products table -->
+<div class="panel panel-flat">
+    <div class="panel-heading">
+        <h5 class="panel-title">Products and Services<a class="heading-elements-toggle"><i class="icon-more"></i></a></h5>
+    </div>
+
+    <div class="panel-body">
+        These default products and services are available in Quotes App. Edits and added products are saved to your user profile.
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Session Fee</td>
+                    <td></td>
+                    <td>300.00</td>
+                    <td><a href="#">edit</a></td>
+                </tr>
+                <tr>
+                    <td>5x7</td>
+                    <td></td>
+                    <td>400.00</td>
+                    <td><a href="#">edit</a></td>
+                </tr>
+                <tr>
+                    <td>9x10</td>
+                    <td></td>
+                    <td>500.00</td>
+                    <td><a href="#">edit</a></td>
+                </tr>
+                <tr>
+                    <td>Leather Album</td>
+                    <td></td>
+                    <td>450.00</td>
+                    <td><a href="#">edit</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- /products table -->
+
+
+<!-- /main content -->
+ {% endblock %}
