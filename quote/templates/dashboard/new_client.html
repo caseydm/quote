@@ -12,93 +12,85 @@
 <!-- New client form -->
 <form action="#">
     <div class="panel panel-flat">
-        <div class="panel-heading">
-            <h6 class="panel-title">Client Info</h6>
-        </div>
 
         <div class="panel-body">
             <fieldset>
 {#                 <legend class="text-semibold"><i class="icon-address-book position-left"></i> Contact Info</legend> #}
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Email:</label>
-                            <input type="text" placeholder="eugene@kopyov.com" class="form-control">
+                            <label>First name:</label>
+                            <input type="text" class="form-control">
                         </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Phone #:</label>
-                            <input type="text" placeholder="+99-99-9999-9999" class="form-control">
+                            <label>Last name:</label>
+                            <input type="text" class="form-control">
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-sm-6">
                         <div class="form-group">
-                            <label>First name:</label>
-                            <input type="text" placeholder="Eugene" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Last name:</label>
-                            <input type="text" placeholder="Kopyov" class="form-control">
+                            <label>Email:</label>
+                            <input type="text" class="form-control">
                         </div>
                     </div>
                 </div>
 
-                <p><a data-toggle="collapse" data-target="#address">+ Add Address</a></p>
+                <p><a data-toggle="collapse" data-target="#address"><i class=" icon-menu-open2"></i> Address (optional)</a></p>
                 <div id="address" class="collapse">
-                    <legend class="text-semibold"><i class="icon-mailbox position-left"></i> Address</legend>
+{#                     <legend class="text-semibold"><i class="icon-mailbox position-left"></i> Address</legend> #}
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Phone #:</label>
+                                <input type="text" class="form-control">
+                            </div>
                             <div class="form-group">
                                 <label>Address line 1:</label>
-                                <input type="text" placeholder="Ring street 12" class="form-control">
+                                <input type="text" class="form-control">
                             </div>
 
                             <div class="form-group">
                                 <label>Address line 2:</label>
-                                <input type="text" placeholder="Ring street 12" class="form-control">
+                                <input type="text" class="form-control">
                             </div>
                         </div>
                     </div>
                     
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="form-group">
                                 <label>City:</label>
-                                <input type="text" placeholder="Munich" class="form-control">
+                                <input type="text" class="form-control">
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-sm-3">
                             <div class="form-group">
                                 <label>State:</label>
-                                <input type="text" placeholder="Bayern" class="form-control">
+                                <input type="text" class="form-control">
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-sm-3">
                             <div class="form-group">
                                 <label>ZIP code:</label>
-                                <input type="text" placeholder="1031" class="form-control">
+                                <input type="text" class="form-control">
                             </div>
                         </div>
                     </div>
                 </div>
             </fieldset>
             <div class="text-right">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </div>
         </div>
     </div>
