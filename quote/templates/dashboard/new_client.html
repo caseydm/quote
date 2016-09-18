@@ -5,68 +5,105 @@
 {% block content %}
 <!-- Main content -->
 
-<!-- Estimates panel -->
-<div class="panel panel-white">
-    <div class="panel-heading">
-        <h5 class="panel-title">New Client</h5>
-    </div>
+<div class="page-header">
+  <h2>New Client</h2>
+</div>
 
-    <div class="panel-body">
-        <form class="form-horizontal" action="#">
-            <fieldset class="content-group">
+<!-- New client form -->
+<form action="#">
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h6 class="panel-title">Client Info</h6>
+        </div>
 
-                <div class="form-group">
-                    <label class="control-label col-lg-2">Default text input</label>
-                    <div class="col-lg-10">
-                        <input type="text" class="form-control">
+        <div class="panel-body">
+            <fieldset>
+{#                 <legend class="text-semibold"><i class="icon-address-book position-left"></i> Contact Info</legend> #}
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="text" placeholder="eugene@kopyov.com" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Phone #:</label>
+                            <input type="text" placeholder="+99-99-9999-9999" class="form-control">
+                        </div>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label col-lg-2">Password</label>
-                    <div class="col-lg-10">
-                        <input type="password" class="form-control">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>First name:</label>
+                            <input type="text" placeholder="Eugene" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Last name:</label>
+                            <input type="text" placeholder="Kopyov" class="form-control">
+                        </div>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label col-lg-2">Input with placeholder</label>
-                    <div class="col-lg-10">
-                        <input type="text" class="form-control" placeholder="Enter your username...">
-                    </div>
-                </div>
+                <p><a data-toggle="collapse" data-target="#address">+ Add Address</a></p>
+                <div id="address" class="collapse">
+                    <legend class="text-semibold"><i class="icon-mailbox position-left"></i> Address</legend>
 
-                <div class="form-group">
-                    <label class="control-label col-lg-2">Predefined value</label>
-                    <div class="col-lg-10">
-                        <input type="text" class="form-control" value="http://">
-                    </div>
-                </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Address line 1:</label>
+                                <input type="text" placeholder="Ring street 12" class="form-control">
+                            </div>
 
-                <div class="form-group">
-                    <label class="control-label col-lg-2">Default select</label>
-                    <div class="col-lg-10">
-                        <select name="select" class="form-control">
-                            <option value="opt1">Usual select box</option>
-                            <option value="opt2">Option 2</option>
-                            <option value="opt3">Option 3</option>
-                            <option value="opt4">Option 4</option>
-                            <option value="opt5">Option 5</option>
-                            <option value="opt6">Option 6</option>
-                            <option value="opt7">Option 7</option>
-                            <option value="opt8">Option 8</option>
-                        </select>
+                            <div class="form-group">
+                                <label>Address line 2:</label>
+                                <input type="text" placeholder="Ring street 12" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>City:</label>
+                                <input type="text" placeholder="Munich" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>State:</label>
+                                <input type="text" placeholder="Bayern" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>ZIP code:</label>
+                                <input type="text" placeholder="1031" class="form-control">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </fieldset>
-
             <div class="text-right">
-                <button type="submit" class="btn btn-primary">Submit <i class="icon-arrow-right14 position-right"></i></button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
-        </form>
+        </div>
     </div>
-</div>
-<!-- /estimates panel -->
+</form>
+<!-- /new client form -->
 
 
 <!-- /main content -->
