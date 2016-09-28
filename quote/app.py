@@ -50,7 +50,6 @@ def db_setup():
     """Create initial user"""
     db.drop_all()
     db.create_all()
-    print('tables created')
     user_datastore.create_user(email='caseym@gmail.com', password='password')
     db.session.commit()
 
