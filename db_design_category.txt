@@ -1,0 +1,21 @@
+table: product_categories
+- id
+- parent_id
+- description
+
+table: options
+- id
+- description
+
+products:
+- id
+- product_category_id (foreign key)
+- options_ids (list of foreign keys referring to options)
+- price
+
+Look up product:
+form:
+- several drop downs to get subcategory
+- selection options
+query:
+price = Product.price.filter_by(category_id=category_id, options=options) 
