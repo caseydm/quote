@@ -14,13 +14,24 @@ class Category(db.Model):
     description = db.Column(db.String(255))
 
 
-class Option(db.Model):
-    """Item options model"""
-
-    __tablename__ = 'options'
+class Duration(db.Model):
+    """Lisence duration model"""
 
     id = db.Column(db.Integer(), primary_key=True)
     description = db.Column(db.String(255))
+
+    # amount to multiple from base_price
+    factor = db.Column(db.Integer())
+
+
+class Circulation(db.Model):
+    """Lisence circulation model"""
+
+    id = db.Column(db.Integer(), primary_key=True)
+    description = db.Column(db.String(255))
+
+    # amount to multiply from base_price
+    factor = db.Column(db.Integer())
 
 
 class Product(db.Model):
@@ -30,5 +41,6 @@ class Product(db.Model):
 
     id = db.Column(db.Integer(), primary_key=True)
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
-    options = db.Column(db.PickleType)
-    price = db.Column(db.String(255))
+    size = db.Column(db.String(255))
+    location = db.Column(db.String(255))
+    base_price = db.Column(db.String(255))
