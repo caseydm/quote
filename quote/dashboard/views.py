@@ -2,6 +2,8 @@
 """Dashboard views"""
 from flask import Blueprint, render_template
 from flask.ext.security import login_required
+from .models import Category
+from quote.app import db
 
 blueprint = Blueprint('dashboard', __name__, static_folder='../static')
 
@@ -9,6 +11,9 @@ blueprint = Blueprint('dashboard', __name__, static_folder='../static')
 @blueprint.route('/dashboard')
 @login_required
 def index():
+    cat = Category(name='Test1')
+    db.session.add(cat)
+    db.sessinon.commit()
     return render_template('dashboard/index.html')
 
 
