@@ -1,7 +1,10 @@
+# -*- coding: utf-8 -*-
+"""Item Category models"""
 from quote.extensions import db
 
 
 class Category(db.Model):
+    """Item Category model"""
 
     __tablename__ = 'categories'
 
@@ -12,6 +15,7 @@ class Category(db.Model):
 
 
 class Option(db.Model):
+    """Item options model"""
 
     __tablename__ = 'options'
 
@@ -20,6 +24,7 @@ class Option(db.Model):
 
 
 class Product(db.Model):
+    """Product model"""
 
     __tablename__ = 'products'
 
