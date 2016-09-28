@@ -2,6 +2,8 @@
 """Dashboard views"""
 from flask import Blueprint, render_template
 from flask.ext.security import login_required
+from quote.extensions import db
+from .models import Category
 
 blueprint = Blueprint('dashboard', __name__, static_folder='../static')
 
@@ -28,3 +30,18 @@ def new_client():
 @login_required
 def list_products():
     return render_template('dashboard/products.html')
+
+
+@blueprint.route('/dashboard/categories')
+@login_required
+def edit_categories():
+    cats = [
+        Category(name='Album'),
+        Category(name='Book'),
+        Category(name='Email')
+    ]
+    for cat in cats:
+        db.session.add(cat)
+    db.session.commit()
+    categories = Category.query.all()
+    return render_template('dashboard/categories.html', categories=categories)

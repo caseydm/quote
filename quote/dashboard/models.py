@@ -30,4 +30,5 @@ class Product(db.Model):
 
     id = db.Column(db.Integer(), primary_key=True)
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
+    options = db.Column(db.PickleType)
     price = db.Column(db.String(255))

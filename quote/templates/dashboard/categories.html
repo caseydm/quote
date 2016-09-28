@@ -1,0 +1,16 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Dashboard - Categories{% endblock %}
+
+{% block content %}
+<!-- Main content -->
+
+<!-- Estimates panel -->
+{% for category in categories %}
+{{ category.name }}
+{% endfor %}
+<!-- /invoices panel -->
+
+
+<!-- /main content -->
+ {% endblock %}
