@@ -7,17 +7,11 @@
 
 <!-- Estimates panel -->
 {% for category in categories %}
-    {% if category.id == 1 %}
-        <p>Parent: {{ category.name }}</p>
-    {% endif %}
+    Root: {{ category['root'] }}
+    {% for subcategory in category['subcategories'] %}
+        Sub: {{ subcategory }}
+    {% endfor %}
 {% endfor %}
-
-{% for category in categories %}
-    {% if category.parent_id == 1 %}
-        <p>Child: {{ category.name }}</p>
-    {% endif %}
-{% endfor %}
-
 <!-- /invoices panel -->
 
 
