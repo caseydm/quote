@@ -39,13 +39,20 @@ def list_products():
 @blueprint.route('/dashboard/categories')
 @login_required
 def edit_categories():
-    categories = Category.query.all()
-    roots = [root for root in categories if root.parent_id == 1]
-    items = []
-    for root in roots:
-        items.append({'root': root.name, 'subcategories': []})
-        for category in categories:
-            if category.parent_id == root.id:
-                items[-1]['subcategories'].append(category.name)
+    categories = Category.query.filter_by(parent_id=1)
+    # roots = [root for root in categories if root.parent_id == 1]
+    # items = []
+    # for root in roots:
+    #     items.append({'root': root.name, 'subcategories': []})
+    #     for category in categories:
+    #         if category.parent_id == root.id:
+    #             items[-1]['subcategories'].append(category.name)
 
-    return render_template('dashboard/categories.html', categories=items)
+    # from collection import default_dict
+
+    # category_by_parent_id = default_dict([])
+    # for category in categories:
+    #     category_by_parent_id[category.parent_id].append(category)
+    # items = [{'root': root.name, 'subcategories': category_by_parent_id[root.id]} for root in category_by_parent_id[1]]
+
+    return render_template('dashboard/categories.html', categories=categories)

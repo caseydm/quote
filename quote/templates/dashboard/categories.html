@@ -6,11 +6,20 @@
 <!-- Main content -->
 
 <!-- Estimates panel -->
-{% for category in categories %}
-    <p><b>Root:</b> {{ category['root'] }}</p>
-    {% for subcategory in category['subcategories'] %}
-        <p>Sub: {{ subcategory }}</p>
-    {% endfor %}
+<p>Categories</p>
+{% for root in categories %}
+    <p>{{ root.name }}
+    {% if root.children %}
+        {% for subcat1 in root.children %}
+            >  {{ subcat1.name }}
+            {% if subcat1.children %}
+                {% for subcat2 in subcat1.children %}
+                 > {{ subcat2.name }}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    </p>
 {% endfor %}
 <!-- /invoices panel -->
 

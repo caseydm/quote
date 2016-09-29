@@ -9,9 +9,10 @@ class Category(db.Model):
     __tablename__ = 'categories'
 
     id = db.Column(db.Integer(), primary_key=True)
-    parent_id = db.Column(db.Integer)
+    parent_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
     name = db.Column(db.String(255))
     description = db.Column(db.String(255))
+    children = db.relationship('Category')
 
 
 class Duration(db.Model):
