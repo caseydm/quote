@@ -7,9 +7,9 @@
 
 <!-- Estimates panel -->
 {% for category in categories %}
-    Root: {{ category['root'] }}
+    <p><b>Root:</b> {{ category['root'] }}</p>
     {% for subcategory in category['subcategories'] %}
-        Sub: {{ subcategory }}
+        <p>Sub: {{ subcategory }}</p>
     {% endfor %}
 {% endfor %}
 <!-- /invoices panel -->

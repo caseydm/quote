@@ -52,7 +52,8 @@ def save_categories(db):
         Category(name='Digital Media', parent_id=1),
         Category(name='Advertising', parent_id=1),
         Category(name='Retail Product and Packaging', parent_id=1),
-        Category(name='Email Marketing', parent_id=2)
+        Category(name='Email Marketing', parent_id=2),
+        Category(name='Pamphlet', parent_id=3)
     ]
     for cat in cats:
         db.session.add(cat)
