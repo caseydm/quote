@@ -14,31 +14,28 @@
             </div>
 
             <div class="panel-body">
-                <form class="form-horizontal" action="#">
+                <form class="form-horizontal" method="post">
+                {{ form.hidden_tag() }}
                     <fieldset class="content-group">
 
                         <div class="form-group">
                             <label class="control-label col-lg-2">Name</label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control">
+                                 {{ form.name(class='form-control', required='true') }}
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-lg-2">Parent</label>
                             <div class="col-lg-10">
-                                <select name="select" class="form-control">
-                                    <option value="opt1">None</option>
-                                    <option value="opt2">Album</option>
-                                    <option value="opt3">Advertising</option>
-                                </select>
+                                 {{ form.parent(class='form-control') }}
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-lg-2">Description</label>
                             <div class="col-lg-10">
-                                <textarea class="form-control" rows="3"></textarea>
+                                {{ form.description(class='form-control') }}
                             </div>
                         </div>
                     </fieldset>

@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """Dashboard views"""
 from collections import defaultdict
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, url_for
 from flask.ext.security import login_required
 from .models import Category
+from .forms import AddCategoryForm
 from quote.extensions import db
 
 blueprint = Blueprint('dashboard', __name__, static_folder='../static')
@@ -37,12 +38,25 @@ def list_products():
     return render_template('dashboard/products.html')
 
 
-@blueprint.route('/dashboard/categories')
+@blueprint.route('/dashboard/categories', methods=['GET', 'POST'])
 @login_required
 def edit_categories():
-    parent = Category.query.get(3)
-    newcat = Category(name='New One', parent=parent)
-    db.session.add(newcat)
-    db.session.commit()
+    form = AddCategoryForm()
+
+    # form submit
+    if form.validate_on_submit():
+        category = Category(
+            name=form.name.data,
+            parent_id=form.parent.data,
+            description=form.description.data
+        )
+        db.session.add(category)
+        db.session.commit()
+        return redirect(url_for('dashboard.edit_categories'))
+
     categories = Category.query.filter_by(parent_id=1)
-    return render_template('dashboard/categories.html', categories=categories)
+    return render_template(
+        'dashboard/categories.html',
+        categories=categories,
+        form=form
+    )
