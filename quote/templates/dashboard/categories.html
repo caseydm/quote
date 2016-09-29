@@ -5,24 +5,81 @@
 {% block content %}
 <!-- Main content -->
 
-<!-- Estimates panel -->
-<p>Categories</p>
-{% for root in categories %}
-    <p>{{ root.name }}
-    {% if root.children %}
-        {% for subcat1 in root.children %}
-            >  {{ subcat1.name }}
-            {% if subcat1.children %}
-                {% for subcat2 in subcat1.children %}
-                 > {{ subcat2.name }}
-                {% endfor %}
-            {% endif %}
-        {% endfor %}
-    {% endif %}
-    </p>
-{% endfor %}
-<!-- /invoices panel -->
+<div class="row">
+    <!-- Add category -->
+    <div class="col-md-4">
+        <div class="panel panel-white">
+            <div class="panel-heading">
+                <h5 class="panel-title">Add New Category</h5>
+            </div>
 
+            <div class="panel-body">
+                <form class="form-horizontal" action="#">
+                    <fieldset class="content-group">
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Name</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Parent</label>
+                            <div class="col-lg-10">
+                                <select name="select" class="form-control">
+                                    <option value="opt1">None</option>
+                                    <option value="opt2">Album</option>
+                                    <option value="opt3">Advertising</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Description</label>
+                            <div class="col-lg-10">
+                                <textarea class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary">Submit <i class="icon-arrow-right14 position-right"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /add category -->
+
+    
+    <!-- Manage categories -->
+    <div class="col-md-8">
+        <div class="panel panel-white">
+            <div class="panel-heading">
+                <h5 class="panel-title">Manage Categories</h5>
+            </div>
+
+            <div class="panel-body">
+                {% for root in categories %}
+                    <p>{{ root.name }}
+                    {% if root.children %}
+                        {% for subcat1 in root.children %}
+                            >  {{ subcat1.name }}
+                            {% if subcat1.children %}
+                                {% for subcat2 in subcat1.children %}
+                                 > {{ subcat2.name }}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- /manage categories -->
+</div>
 
 <!-- /main content -->
  {% endblock %}

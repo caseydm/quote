@@ -12,11 +12,14 @@ class Category(db.Model):
     parent_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
     name = db.Column(db.String(255))
     description = db.Column(db.String(255))
-    children = db.relationship('Category')
+    children = db.relationship(
+        'Category',
+        backref=db.backref('parent', remote_side=id)
+    )
 
 
 class Duration(db.Model):
-    """Lisence duration model"""
+    """License duration model"""
 
     id = db.Column(db.Integer(), primary_key=True)
     description = db.Column(db.String(255))

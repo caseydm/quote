@@ -4,6 +4,7 @@ from collections import defaultdict
 from flask import Blueprint, render_template
 from flask.ext.security import login_required
 from .models import Category
+from quote.extensions import db
 
 blueprint = Blueprint('dashboard', __name__, static_folder='../static')
 
@@ -39,5 +40,9 @@ def list_products():
 @blueprint.route('/dashboard/categories')
 @login_required
 def edit_categories():
+    parent = Category.query.get(3)
+    newcat = Category(name='New One', parent=parent)
+    db.session.add(newcat)
+    db.session.commit()
     categories = Category.query.filter_by(parent_id=1)
     return render_template('dashboard/categories.html', categories=categories)
