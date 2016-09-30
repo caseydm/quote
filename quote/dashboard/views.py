@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """Dashboard views"""
-from collections import defaultdict
 from flask import Blueprint, render_template, redirect, url_for
 from flask.ext.security import login_required
 from .models import Category
@@ -10,8 +9,31 @@ from quote.extensions import db
 blueprint = Blueprint('dashboard', __name__, static_folder='../static')
 
 
-def tree():
-    return defaultdict(tree)
+def build_choice_tree():
+    categories = Category.query.get(1).children
+    items = [(1, 'None')]
+    for root in categories:
+        items.append((root.id, root.name))
+        if root.children:
+            for subcat1 in root.children:
+                items.append((subcat1.id, '- ' + subcat1.name))
+                if subcat1.children:
+                    for subcat2 in subcat1.children:
+                        items.append((subcat2.id, '--' + subcat2.name))
+    return items
+
+
+def build_choice_tree2(categories):
+    items = []
+
+    def loop(categories):
+        for category in categories:
+            items.append((category.id, category.name))
+            if category.children:
+                loop(category.children)
+        return items
+    result = loop(categories)
+    return result
 
 
 @blueprint.route('/dashboard')
@@ -41,7 +63,9 @@ def list_products():
 @blueprint.route('/dashboard/categories', methods=['GET', 'POST'])
 @login_required
 def edit_categories():
+    categories = Category.query.get(1).children
     form = AddCategoryForm()
+    form.parent.choices = build_choice_tree2(categories)
 
     # form submit
     if form.validate_on_submit():
