@@ -58,19 +58,12 @@
             </div>
 
             <div class="panel-body">
-                {% for root in categories %}
-                    <p><b>{{ root.name }}</b></p>
-                    {% if root.children %}
-                        {% for subcat1 in root.children %}
-                            <p>-  {{ subcat1.name }}</p>
-                            {% if subcat1.children %}
-                                {% for subcat2 in subcat1.children %}
-                                 <p>-- {{ subcat2.name }}</p>
-                                {% endfor %}
-                            {% endif %}
-                        {% endfor %}
+                {% for category in categories %}
+                    {% if category[0] == 1 %}
+                        <p><b>{{ category[1] }}</b></p>
+                    {% else %}
+                        <p>{{ category[1] }}</p>
                     {% endif %}
-                    </p>
                 {% endfor %}
             </div>
         </div>
