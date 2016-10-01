@@ -1,0 +1,86 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Dashboard - Categories{% endblock %}
+
+{% block content %}
+<!-- Main content -->
+
+<div class="row">
+    <!-- Add category -->
+    <div class="col-sm-4">
+        <div class="panel panel-white">
+            <div class="panel-heading">
+                <h5 class="panel-title">Add New Category</h5>
+            </div>
+
+            <div class="panel-body">
+                <form class="form-horizontal" method="post">
+                {{ form.hidden_tag() }}
+                    <fieldset class="content-group">
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Name</label>
+                            <div class="col-lg-10">
+                                 {{ form.name(class='form-control', required='true') }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Parent</label>
+                            <div class="col-lg-10">
+                                 {{ form.parent(class='form-control') }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Description</label>
+                            <div class="col-lg-10">
+                                {{ form.description(class='form-control') }}
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary">Submit <i class="icon-arrow-right14 position-right"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /add category -->
+
+    
+    <!-- Manage categories -->
+    <div class="col-sm-8">
+        <div class="panel panel-white">
+            <div class="panel-heading">
+                <h5 class="panel-title">Manage Categories</h5>
+            </div>
+
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for category in categories %}
+                                <tr>
+                                    <td>{{ category[1] }}</td>
+                                    <td></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /manage categories -->
+</div>
+
+<!-- /main content -->
+ {% endblock %}

@@ -4,6 +4,7 @@ from quote.config import ProdConfig
 from quote import public, dashboard
 from quote.extensions import db, mail, security
 from quote.security.models import User, Role
+from quote.dashboard.models import Category
 
 
 # security setup
@@ -45,12 +46,28 @@ def register_blueprints(app):
 app = create_app()
 
 
+def save_categories(db):
+    cats = [
+        Category(name='License'),
+        Category(name='Digital Media', parent_id=1),
+        Category(name='Advertising', parent_id=1),
+        Category(name='Retail Product and Packaging', parent_id=1),
+        Category(name='Email Marketing', parent_id=2),
+        Category(name='Pamphlet', parent_id=3),
+        Category(name='Web Site', parent_id=5)
+    ]
+    for cat in cats:
+        db.session.add(cat)
+    db.session.commit()
+
+
 @app.before_first_request
 def db_setup():
     """Create initial user"""
     db.drop_all()
     db.create_all()
     user_datastore.create_user(email='caseym@gmail.com', password='password')
+    save_categories(db)
     db.session.commit()
 
 
