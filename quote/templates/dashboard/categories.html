@@ -59,11 +59,7 @@
 
             <div class="panel-body">
                 {% for category in categories %}
-                    {% if category[0] == 1 %}
-                        <p><b>{{ category[1] }}</b></p>
-                    {% else %}
-                        <p>{{ category[1] }}</p>
-                    {% endif %}
+                    <p>{{ category[1] }}</p>
                 {% endfor %}
             </div>
         </div>
