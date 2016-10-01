@@ -4,7 +4,8 @@ from quote.config import ProdConfig
 from quote import public, dashboard
 from quote.extensions import db, mail, security
 from quote.security.models import User, Role
-from quote.dashboard.models import Category
+from quote.dashboard.models import Category, Duration, Circulation,\
+    ImageLocation, ImageSize, Product
 
 
 # security setup
@@ -46,18 +47,42 @@ def register_blueprints(app):
 app = create_app()
 
 
+# default data for development
 def save_categories(db):
-    cats = [
+    items = [
         Category(name='License'),
         Category(name='Digital Media', parent_id=1),
         Category(name='Advertising', parent_id=1),
         Category(name='Retail Product and Packaging', parent_id=1),
         Category(name='Email Marketing', parent_id=2),
         Category(name='Pamphlet', parent_id=3),
-        Category(name='Web Site', parent_id=5)
+        Category(name='Web Site', parent_id=5),
+        Duration(name='Up to 1 Week'),
+        Duration(name='Up to 1 Month'),
+        Circulation(name='Up to 5,000'),
+        Circulation(name='Up to 10,000'),
+        ImageSize(name='1/2 Page'),
+        ImageSize(name='Full Page'),
+        ImageLocation(name='Front Page'),
+        ImageLocation(name='Back Cover')
     ]
-    for cat in cats:
-        db.session.add(cat)
+    for item in items:
+        db.session.add(item)
+    db.session.commit()
+
+
+def save_products(db):
+    items = [
+        Product(
+            category_id=5,
+            duration_id=1,
+            circulation_id=1,
+            image_size_id=1,
+            price=3400
+        )
+    ]
+    for item in items:
+        db.session.add(item)
     db.session.commit()
 
 
@@ -68,6 +93,7 @@ def db_setup():
     db.create_all()
     user_datastore.create_user(email='caseym@gmail.com', password='password')
     save_categories(db)
+    save_products(db)
     db.session.commit()
 
 

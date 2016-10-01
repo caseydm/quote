@@ -9,7 +9,7 @@ class Category(db.Model):
     __tablename__ = 'categories'
 
     id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.String(255))
+    name = db.Column(db.String(255), nullable=False)
     parent_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
     description = db.Column(db.String(255))
     children = db.relationship(
@@ -22,20 +22,28 @@ class Duration(db.Model):
     """License duration model"""
 
     id = db.Column(db.Integer(), primary_key=True)
-    description = db.Column(db.String(255))
-
-    # amount to multiple from base_price
-    factor = db.Column(db.Integer())
+    name = db.Column(db.String(255))
 
 
 class Circulation(db.Model):
-    """Lisence circulation model"""
+    """License circulation model"""
 
     id = db.Column(db.Integer(), primary_key=True)
-    description = db.Column(db.String(255))
+    name = db.Column(db.String(255))
 
-    # amount to multiply from base_price
-    factor = db.Column(db.Integer())
+
+class ImageSize(db.Model):
+    """License image size"""
+
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(255))
+
+
+class ImageLocation(db.Model):
+    """License image location"""
+
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(255))
 
 
 class Product(db.Model):
@@ -45,6 +53,8 @@ class Product(db.Model):
 
     id = db.Column(db.Integer(), primary_key=True)
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
-    size = db.Column(db.String(255))
-    location = db.Column(db.String(255))
-    base_price = db.Column(db.String(255))
+    circulation_id = db.Column(db.Integer, db.ForeignKey('circulation.id'))
+    duration_id = db.Column(db.Integer, db.ForeignKey('duration.id'))
+    image_size_id = db.Column(db.Integer, db.ForeignKey('image_size.id'))
+    image_location_id = db.Column(db.Integer, db.ForeignKey('image_location.id'))
+    price = db.Column(db.Numeric(6, 2), nullable=False)
