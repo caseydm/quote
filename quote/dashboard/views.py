@@ -9,13 +9,13 @@ from quote.extensions import db
 blueprint = Blueprint('dashboard', __name__, static_folder='../static')
 
 
-def build_category_list(categories, depth=0):
+def build_category_dropdown(categories, depth=0):
     '''Builds category data for parent select field'''
     items = []
     for category in categories:
         items.append((category.id, '-' * depth + ' ' + category.name))
         if category.children:
-            items += build_category_list(category.children, depth + 1)
+            items += build_category_dropdown(category.children, depth + 1)
     return items
 
 
@@ -48,8 +48,8 @@ def list_products():
 def edit_categories():
     form = AddCategoryForm()
     query = Category.query.get(1).children
-    form.parent.choices = build_category_list(query)
-    categories = build_category_list(query)
+    categories = build_category_dropdown(query)
+    form.parent.choices = categories
 
     # form submit
     if form.validate_on_submit():
