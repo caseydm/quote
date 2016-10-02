@@ -2,7 +2,8 @@
 """Dashboard views"""
 from flask import Blueprint, render_template, redirect, url_for
 from flask.ext.security import login_required
-from .models import Category, Product
+from .models import Category, Product, Duration, Circulation, \
+    ImageSize, ImageLocation
 from .forms import AddCategoryForm
 from quote.extensions import db
 
@@ -47,24 +48,38 @@ def products():
 @blueprint.route('/dashboard/categories', methods=['GET', 'POST'])
 @login_required
 def categories():
+    # form setup
     form = AddCategoryForm()
     query = Category.query.get(1).children
     categories = build_category_dropdown(query)
     form.parent.choices = categories
 
+    # options queries
+    duration = Duration.query.all()
+    circulation = Circulation.query.all()
+    image_size = ImageSize.query.all()
+    image_location = ImageLocation.query.all()
+
     # form submit
     if form.validate_on_submit():
+        description = form.description.data
+        if form.description.data == '':
+            description = None
         category = Category(
             name=form.name.data,
             parent_id=form.parent.data,
-            description=form.description.data
+            description=description
         )
         db.session.add(category)
         db.session.commit()
-        return redirect(url_for('dashboard.edit_categories'))
+        return redirect(url_for('dashboard.categories'))
 
     return render_template(
         'dashboard/categories.html',
         categories=categories,
+        duration=duration,
+        circulation=circulation,
+        image_size=image_size,
+        image_location=image_location,
         form=form
     )

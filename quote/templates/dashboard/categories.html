@@ -82,5 +82,133 @@
     <!-- /manage categories -->
 </div>
 
+<div class="row">
+    <!-- Manage options -->
+        <!-- duration -->
+        <div class="col-sm-3">
+            <div class="panel panel-white">
+                <div class="panel-heading">
+                    <h5 class="panel-title">Duration</h5>
+                </div>
+
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for option in duration %}
+                                    <tr>
+                                        <td>{{ option.id }}</td>
+                                        <td>{{ option.name }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <!-- /duration -->
+
+         <!-- circulation -->
+        <div class="col-sm-3">
+            <div class="panel panel-white">
+                <div class="panel-heading">
+                    <h5 class="panel-title">Circulation</h5>
+                </div>
+
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for option in circulation %}
+                                    <tr>
+                                        <td>{{ option.id }}</td>
+                                        <td>{{ option.name }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /circulation -->
+
+        <!-- imgage_size -->
+        <div class="col-sm-3">
+            <div class="panel panel-white">
+                <div class="panel-heading">
+                    <h5 class="panel-title">Image Size</h5>
+                </div>
+
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for option in image_size %}
+                                    <tr>
+                                        <td>{{ option.id }}</td>
+                                        <td>{{ option.name }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <!-- /image_size -->
+
+        <!-- imgage_location -->
+        <div class="col-sm-3">
+            <div class="panel panel-white">
+                <div class="panel-heading">
+                    <h5 class="panel-title">Image Location</h5>
+                </div>
+
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for option in image_location %}
+                                    <tr>
+                                        <td>{{ option.id }}</td>
+                                        <td>{{ option.name }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <!-- /image_location -->
+    <!-- /manage options -->
+</div>
+
 <!-- /main content -->
  {% endblock %}
