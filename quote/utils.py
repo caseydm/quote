@@ -1,4 +1,5 @@
 import csv
+import os
 from quote.dashboard.models import Category, Product, Duration, Circulation, \
     ImageSize, ImageLocation
 
@@ -15,31 +16,31 @@ def get_or_create(session, model, **kwargs):
 
 
 def save_products(db):
-    items = []
     # open file
-    with open('category1.csv') as f:
+    csv_file = os.path.join(os.path.dirname(__file__), 'category1.csv')
+    with open(csv_file) as f:
         reader = csv.DictReader(f)
         for row in reader:
             # look up and assign option objects
-            category = Category.query.filter_by(name=row['category2']).first(),
-            duration = get_or_create(db.session, Duration, name=row['duration']),
-            circulation = get_or_create(db.session, Circulation, name=row['circulation']),
-            image_size = get_or_create(db.session, ImageSize, name=row['image_size']),
+            price = row['price']
+            price = price.replace(',', '')
+            category = Category.query.filter_by(name=row['category2']).first()
+            duration = get_or_create(db.session, Duration, name=row['duration'])
+            circulation = get_or_create(db.session, Circulation, name=row['circulation'])
+            image_size = get_or_create(db.session, ImageSize, name=row['image_size'])
             image_location = get_or_create(db.session, ImageLocation, name=row['image_location'])
 
-            # create products
-            items.append(
-                Product(
-                    category_id=category.id,
-                    duration_id=duration.id,
-                    circulation_id=circulation.id,
-                    image_size_id=image_size.id,
-                    image_location_id=image_location.id,
-                    price=row['price']
-                )
+            # create product
+            product = Product(
+                price=price,
             )
+            product.category = category
+            product.duration = duration
+            product.circulation = circulation
+            product.image_size = image_size
+            product.image_location = image_location
+            # create products
+            db.session.add(product)
 
     # save to database
-    for item in items:
-        db.session.add(item)
     db.session.commit()

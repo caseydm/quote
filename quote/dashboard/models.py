@@ -62,4 +62,4 @@ class Product(db.Model):
     image_size = db.relationship('ImageSize')
     image_location_id = db.Column(db.Integer, db.ForeignKey('image_location.id'))
     image_location = db.relationship('ImageLocation')
-    price = db.Column(db.Numeric(6, 2), nullable=False)
+    price = db.Column(db.Numeric(8, 2), nullable=False)
