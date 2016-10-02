@@ -6,7 +6,7 @@ from quote.extensions import db, mail, security
 from quote.security.models import User, Role
 from quote.dashboard.models import Category, Duration, Circulation,\
     ImageLocation, ImageSize, Product
-from utils import save_products
+from .utils import save_products
 
 
 # security setup

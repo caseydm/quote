@@ -1,5 +1,5 @@
 import csv
-from quote.models import Category, Product, Duration, Circulation, \
+from quote.dashboard.models import Category, Product, Duration, Circulation, \
     ImageSize, ImageLocation
 
 

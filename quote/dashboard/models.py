@@ -11,7 +11,7 @@ class Category(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     parent_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
-    description = db.Column(db.String(255))
+    description = db.Column(db.Text)
     children = db.relationship(
         'Category',
         backref=db.backref('parent', remote_side=id)
