@@ -53,8 +53,13 @@ class Product(db.Model):
 
     id = db.Column(db.Integer(), primary_key=True)
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
+    category = db.relationship('Category')
     circulation_id = db.Column(db.Integer, db.ForeignKey('circulation.id'))
+    circulation = db.relationship('Circulation')
     duration_id = db.Column(db.Integer, db.ForeignKey('duration.id'))
+    duration = db.relationship('Duration')
     image_size_id = db.Column(db.Integer, db.ForeignKey('image_size.id'))
+    image_size = db.relationship('ImageSize')
     image_location_id = db.Column(db.Integer, db.ForeignKey('image_location.id'))
+    image_location = db.relationship('ImageLocation')
     price = db.Column(db.Numeric(6, 2), nullable=False)

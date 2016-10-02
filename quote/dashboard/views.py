@@ -2,7 +2,7 @@
 """Dashboard views"""
 from flask import Blueprint, render_template, redirect, url_for
 from flask.ext.security import login_required
-from .models import Category
+from .models import Category, Product
 from .forms import AddCategoryForm
 from quote.extensions import db
 
@@ -39,13 +39,14 @@ def new_client():
 
 @blueprint.route('/dashboard/products')
 @login_required
-def list_products():
-    return render_template('dashboard/products.html')
+def products():
+    products = Product.query.all()
+    return render_template('dashboard/products.html', products=products)
 
 
 @blueprint.route('/dashboard/categories', methods=['GET', 'POST'])
 @login_required
-def edit_categories():
+def categories():
     form = AddCategoryForm()
     query = Category.query.get(1).children
     categories = build_category_dropdown(query)

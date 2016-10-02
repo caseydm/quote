@@ -23,37 +23,23 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Item</th>
-                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Duration</th>
+                    <th>Circulation</th>
+                    <th>Image Size</th>
                     <th>Price</th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Session Fee</td>
-                    <td></td>
-                    <td>300.00</td>
-                    <td><a href="#">edit</a></td>
-                </tr>
-                <tr>
-                    <td>5x7</td>
-                    <td></td>
-                    <td>400.00</td>
-                    <td><a href="#">edit</a></td>
-                </tr>
-                <tr>
-                    <td>9x10</td>
-                    <td></td>
-                    <td>500.00</td>
-                    <td><a href="#">edit</a></td>
-                </tr>
-                <tr>
-                    <td>Leather Album</td>
-                    <td></td>
-                    <td>450.00</td>
-                    <td><a href="#">edit</a></td>
-                </tr>
+                {% for product in products %}
+                    <tr> 
+                        <td>{{ product.category.name }}</td>
+                        <td>{{ product.duration.name }}</td>
+                        <td>{{ product.circulation.name }}</td>
+                        <td>{{ product.image_size.name }}</td>
+                        <td>{{ product.price }}</td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
