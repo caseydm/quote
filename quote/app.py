@@ -6,6 +6,7 @@ from quote.extensions import db, mail, security
 from quote.security.models import User, Role
 from quote.dashboard.models import Category, Duration, Circulation,\
     ImageLocation, ImageSize, Product
+from utils import save_products
 
 
 # security setup
@@ -52,33 +53,20 @@ def save_categories(db):
     items = [
         Category(name='License'),
         Category(name='Digital Media', parent_id=1),
-        Category(name='Advertising', parent_id=1),
-        Category(name='Retail Product and Packaging', parent_id=1),
-        Category(name='Email Marketing', parent_id=2),
-        Category(name='Pamphlet', parent_id=3),
-        Category(name='Web Site', parent_id=5),
-        Duration(name='Up to 1 Week'),
-        Duration(name='Up to 1 Month'),
-        Circulation(name='Up to 5,000'),
-        Circulation(name='Up to 10,000'),
-        ImageSize(name='1/2 Page'),
-        ImageSize(name='Full Page'),
-        ImageLocation(name='Front Page'),
-        ImageLocation(name='Back Cover')
-    ]
-    for item in items:
-        db.session.add(item)
-    db.session.commit()
-
-
-def save_products(db):
-    items = [
-        Product(
-            category_id=5,
-            duration_id=1,
-            circulation_id=1,
-            image_size_id=1,
-            price=3400
+        Category(
+            name='Digital Advertisement',
+            description='Advertisement within an application, website, game or other software. Includes banner ads, over-page, in-page or web video advertisements. Use of advertisement on social media platforms requires purchase of separate "Web-Social Media" license.',
+            parent_id=2
+        ),
+        Category(
+            name='Corporate and Promotional Site',
+            description='Commercial or promotional use on a website, including as a design element on a corporate website or in branding/profile designs on Social Media. (Does not include paid advertising; for example, "Web -- advertisement.")',
+            parent_id=2
+        ),
+        Category(
+            name='Email Marketing',
+            description='A brochure distributed only via electronic means such as a download from a website or emailed upon request to customers and promotional email sent directly to individuals. Use of brochure on social media platforms requires purchase of separate "Web-Social Media" license.',
+            parent_id=2
         )
     ]
     for item in items:

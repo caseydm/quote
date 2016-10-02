@@ -1,4 +1,5 @@
 venv
+quote/category1.csv
 *.pyc
 .env
 .cache
