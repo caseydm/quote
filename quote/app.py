@@ -59,7 +59,7 @@ def save_categories(db):
             parent_id=2
         ),
         Category(
-            name='Corporate and Promotional Site',
+            name='Corporate and promotional site',
             description='Commercial or promotional use on a website, including as a design element on a corporate website or in branding/profile designs on Social Media. (Does not include paid advertising; for example, "Web -- advertisement.")',
             parent_id=2
         ),
