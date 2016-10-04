@@ -9,9 +9,13 @@ def get_or_create(session, model, **kwargs):
     if instance:
         return instance
     else:
-        instance = model(**kwargs)
-        session.add(instance)
-        session.commit()
+        for key in kwargs:
+            if kwargs[key] == '':
+                instance = None
+            else:
+                instance = model(**kwargs)
+                session.add(instance)
+                session.commit()
         return instance
 
 
