@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Dashboard views"""
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, flash
 from flask.ext.security import login_required, current_user
 from .models import Category, Product, Duration, Circulation, \
     ImageSize, ImageLocation, Client
@@ -49,6 +49,8 @@ def new_client():
         client = Client(**data)
         db.session.add(client)
         db.session.commit()
+
+        flash('Client saved')
         return redirect(url_for('dashboard.new_client'))
     return render_template('dashboard/new_client.html', form=form)
 
