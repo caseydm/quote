@@ -63,3 +63,21 @@ class Product(db.Model):
     image_location_id = db.Column(db.Integer, db.ForeignKey('image_location.id'))
     image_location = db.relationship('ImageLocation')
     price = db.Column(db.Numeric(8, 2), nullable=False)
+
+
+class Client(db.Model):
+    """Client name, contact details, and address"""
+
+    __tablename__ = 'clients'
+
+    id = db.Column(db.Integer(), primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    fname = db.Column(db.String(75))
+    lname = db.Column(db.String(75))
+    email = db.Column(db.String(100))
+    phone = db.Column(db.String(75))
+    address1 = db.Column(db.String(100))
+    address2 = db.Column(db.String(100))
+    city = db.Column(db.String(100))
+    state = db.Column(db.String(50))
+    zip_code = db.Column(db.Integer())

@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Dashboard views"""
 from flask import Blueprint, render_template, redirect, url_for
-from flask.ext.security import login_required
+from flask.ext.security import login_required, current_user
 from .models import Category, Product, Duration, Circulation, \
-    ImageSize, ImageLocation
-from .forms import AddCategoryForm
+    ImageSize, ImageLocation, Client
+from .forms import AddCategoryForm, AddClientForm
 from quote.extensions import db
 
 blueprint = Blueprint('dashboard', __name__, static_folder='../static')
@@ -32,10 +32,25 @@ def new_estimate():
     return render_template('dashboard/new_estimate.html')
 
 
-@blueprint.route('/dashboard/clients/new')
+@blueprint.route('/dashboard/clients/new', methods=['GET', 'POST'])
 @login_required
 def new_client():
-    return render_template('dashboard/new_client.html')
+    form = AddClientForm()
+    if form.validate_on_submit():
+        data = form.data
+        
+        # set empty form strings to None
+        data = {k: None if v == '' else v for k, v in data.items()}
+        
+        # add user id
+        data['user_id'] = current_user.get_id()
+
+        # save to database
+        client = Client(**data)
+        db.session.add(client)
+        db.session.commit()
+        return redirect(url_for('dashboard.new_client'))
+    return render_template('dashboard/new_client.html', form=form)
 
 
 @blueprint.route('/dashboard/products')
