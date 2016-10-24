@@ -77,12 +77,12 @@ def save_categories(db):
 @app.before_first_request
 def db_setup():
     """Create initial user"""
-    db.drop_all()
-    db.create_all()
+    # db.drop_all()
+    # db.create_all()
     user_datastore.create_user(email='caseym@gmail.com', password='password')
     # save_categories(db)
     # save_products(db)
-    db.session.commit()
+    # db.session.commit()
 
 
 if __name__ == '__main__':
