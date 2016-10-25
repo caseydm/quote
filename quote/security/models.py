@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """User models"""
-from flask.ext.security import UserMixin, RoleMixin
+from flask_security import UserMixin, RoleMixin
 from quote.extensions import db
 
 

@@ -1,5 +1,5 @@
 from flask import Flask
-from flask.ext.security import SQLAlchemyUserDatastore, user_registered
+from flask_security import SQLAlchemyUserDatastore, user_registered
 from quote.config import ProdConfig
 from quote import public, dashboard
 from quote.extensions import db, mail, security

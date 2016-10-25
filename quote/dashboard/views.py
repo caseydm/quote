@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Dashboard views"""
 from flask import Blueprint, render_template, redirect, url_for, flash
-from flask.ext.security import login_required, current_user
+from flask_security import login_required, current_user
 from .models import Category, Product, Duration, Circulation, \
     ImageSize, ImageLocation, Client
 from .forms import AddCategoryForm, AddClientForm
