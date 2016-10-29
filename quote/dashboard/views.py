@@ -38,10 +38,10 @@ def new_client():
     form = AddClientForm()
     if form.validate_on_submit():
         data = form.data
-        
+
         # set empty form strings to None
         data = {k: None if v == '' else v for k, v in data.items()}
-        
+
         # add user id
         data['user_id'] = current_user.get_id()
 
@@ -85,9 +85,13 @@ def categories():
         description = form.description.data
         if form.description.data == '':
             description = None
+        if form.parent.data == '':
+            parent_id = 1
+        else:
+            parent_id = form.parent.data
         category = Category(
             name=form.name.data,
-            parent_id=form.parent.data,
+            parent_id=parent_id,
             description=description
         )
         db.session.add(category)
