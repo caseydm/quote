@@ -67,11 +67,9 @@ def products():
 def categories():
     # form setup
     form = AddCategoryForm()
-    if Category.query.get(1) is None:
-        db.session.add(Category(name='License'))
-        db.session.commit()
     query = Category.query.get(1).children
     categories = build_category_dropdown(query)
+    categories.insert(0, (1, ''))  # root option
     form.parent.choices = categories
 
     # options queries
@@ -85,10 +83,7 @@ def categories():
         description = form.description.data
         if form.description.data == '':
             description = None
-        if form.parent.data == '':
-            parent_id = 1
-        else:
-            parent_id = form.parent.data
+        parent_id = form.parent.data
         category = Category(
             name=form.name.data,
             parent_id=parent_id,

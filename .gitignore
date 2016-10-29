@@ -1,5 +1,5 @@
 venv
-quote/category1.csv
+import_files
 *.pyc
 .env
 .cache

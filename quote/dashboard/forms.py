@@ -8,7 +8,7 @@ class AddCategoryForm(Form):
     Add a category
     """
     name = StringField('Name', validators=[InputRequired()])
-    parent = SelectField('Parent', coerce=int)
+    parent = SelectField('Parent', coerce=int, default=1)
     description = TextAreaField('Description')
 
 
