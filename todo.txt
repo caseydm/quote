@@ -1,6 +1,0 @@
-# Features
-1. Enable modal pop-up during first login that asks for name, business address, and phone number
-2. Import clients module
-3. As for business address via modal when creating an invoice or estimate
-4. Set terms and notes on invoice/estimate
-5. Add products and services module so user can view and customize available products and services 
