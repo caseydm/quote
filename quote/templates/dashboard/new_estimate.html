@@ -8,62 +8,124 @@
 <!-- Estimates panel -->
 <div class="panel panel-white">
     <div class="panel-heading">
-        <h5 class="panel-title">New Estimate</h5>
+        <h6 class="panel-title">New estimate<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+        <div class="heading-elements">
+            <button type="button" class="btn btn-default btn-xs heading-btn"><i class="icon-file-check position-left"></i> Save</button>
+            <button type="button" class="btn btn-default btn-xs heading-btn"><i class="icon-printer position-left"></i> Print</button>
+        </div>
+    </div>
+
+    <div class="panel-body no-padding-bottom">
+        <div class="row">
+            <div class="col-sm-6 content-group">
+                <h5>My Company</h5>
+                <ul class="list-condensed list-unstyled">
+                    <li>2269 Elba Lane</li>
+                    <li>Paris, France</li>
+                    <li>888-555-2311</li>
+                </ul>
+            </div>
+
+            <div class="col-sm-6 content-group">
+                <div class="invoice-details">
+                    <h5 class="text-uppercase text-semibold">Estimate #49029</h5>
+                    <ul class="list-condensed list-unstyled">
+                        <li>Date: <span class="text-semibold">January 12, 2015</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-lg-9 content-group">
+                <span class="text-muted">To:</span>
+                <ul class="list-condensed list-unstyled">
+                    <li><h5>Rebecca Manes</h5></li>
+                    <li>888-555-2311</li>
+                    <li><a href="#">rebecca@normandaxis.ltd</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-lg">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th class="col-sm-1">Rate</th>
+                    <th class="col-sm-1">Hours</th>
+                    <th class="col-sm-1">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <h6 class="no-margin">Create UI design model</h6>
+                        <span class="text-muted">One morning, when Gregor Samsa woke from troubled.</span>
+                    </td>
+                    <td>$70</td>
+                    <td>57</td>
+                    <td><span class="text-semibold">$3,990</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="no-margin">Support tickets list doesn't support commas</h6>
+                        <span class="text-muted">I'd have gone up to the boss and told him just what i think.</span>
+                    </td>
+                    <td>$70</td>
+                    <td>12</td>
+                    <td><span class="text-semibold">$840</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="no-margin">Fix website issues on mobile</h6>
+                        <span class="text-muted">I am so happy, my dear friend, so absorbed in the exquisite.</span>
+                    </td>
+                    <td>$70</td>
+                    <td>31</td>
+                    <td><span class="text-semibold">$2,170</span></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <div class="panel-body">
-        <form class="form-horizontal" action="#">
-            <fieldset class="content-group">
-
-                <div class="form-group">
-                    <label class="control-label col-lg-2">Default text input</label>
-                    <div class="col-lg-10">
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-lg-2">Password</label>
-                    <div class="col-lg-10">
-                        <input type="password" class="form-control">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-lg-2">Input with placeholder</label>
-                    <div class="col-lg-10">
-                        <input type="text" class="form-control" placeholder="Enter your username...">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-lg-2">Predefined value</label>
-                    <div class="col-lg-10">
-                        <input type="text" class="form-control" value="http://">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-lg-2">Default select</label>
-                    <div class="col-lg-10">
-                        <select name="select" class="form-control">
-                            <option value="opt1">Usual select box</option>
-                            <option value="opt2">Option 2</option>
-                            <option value="opt3">Option 3</option>
-                            <option value="opt4">Option 4</option>
-                            <option value="opt5">Option 5</option>
-                            <option value="opt6">Option 6</option>
-                            <option value="opt7">Option 7</option>
-                            <option value="opt8">Option 8</option>
-                        </select>
-                    </div>
-                </div>
-            </fieldset>
-
-            <div class="text-right">
-                <button type="submit" class="btn btn-primary">Submit <i class="icon-arrow-right14 position-right"></i></button>
+        <div class="row invoice-payment">
+            <div class="col-sm-7">
             </div>
-        </form>
+
+            <div class="col-sm-5">
+                <div class="content-group">
+                    <h6>Total</h6>
+                    <div class="table-responsive no-border">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>Subtotal:</th>
+                                    <td class="text-right">$7,000</td>
+                                </tr>
+                                <tr>
+                                    <th>Tax: <span class="text-regular">(25%)</span></th>
+                                    <td class="text-right">$1,750</td>
+                                </tr>
+                                <tr>
+                                    <th>Total:</th>
+                                    <td class="text-right text-primary"><h5 class="text-semibold">$8,750</h5></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="text-right">
+                        <button type="button" class="btn btn-primary btn-labeled"><b><i class="icon-paperplane"></i></b> Send invoice</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h6>Other information</h6>
+        <p class="text-muted">Thank you for using Limitless. This invoice can be paid via PayPal, Bank transfer, Skrill or Payoneer. Payment is due within 30 days from the date of delivery. Late payment is possible, but with with a fee of 10% per month. Company registered in England and Wales #6893003, registered office: 3 Goodman Street, London E1 8BF, United Kingdom. Phone number: 888-555-2311</p>
     </div>
 </div>
 <!-- /estimates panel -->
