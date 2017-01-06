@@ -4,7 +4,6 @@ from flask import Blueprint, render_template, redirect, url_for, flash
 from flask_security import login_required, current_user
 from .models import Category, Product, Duration, Circulation, \
     ImageSize, ImageLocation, Client
-import arrow
 from .forms import AddCategoryForm, AddClientForm
 from quote.extensions import db
 
@@ -25,13 +24,6 @@ def build_category_dropdown(categories, depth=0):
 @login_required
 def index():
     return render_template('dashboard/index.html')
-
-
-@blueprint.route('/dashboard/estimates/new')
-@login_required
-def new_estimate():
-    today = arrow.now().format('MMMM DD, YYYY')
-    return render_template('dashboard/new_estimate.html', today=today)
 
 
 @blueprint.route('/dashboard/clients/new', methods=['GET', 'POST'])
