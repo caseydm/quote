@@ -1,1 +1,1 @@
-web: gunicorn quote.app:app
+web: gunicorn quote.app:create_app\(\)

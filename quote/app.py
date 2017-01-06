@@ -41,9 +41,3 @@ def register_blueprints(app):
     app.register_blueprint(dashboard.views.blueprint)
     app.register_blueprint(estimate.views.blueprint)
     return None
-
-
-app = create_app()
-
-if __name__ == '__main__':
-    app.run()
