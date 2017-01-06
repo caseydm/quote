@@ -11,4 +11,4 @@ blueprint = Blueprint('estimate', __name__, static_folder='../static')
 @login_required
 def new_estimate():
     today = arrow.now().format('MMMM DD, YYYY')
-    return render_template('dashboard/new_estimate.html', today=today)
+    return render_template('dashboard/estimate/new_estimate.html', today=today)

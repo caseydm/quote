@@ -2,6 +2,14 @@
 
 {% block title %}New Estimate{% endblock %}
 
+<!-- Estimate JS files -->
+{% block head %}
+<script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/estimate/editable.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/estimate/mockjax.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/estimate/new_estimate.js') }}"></script>
+{% endblock %}
+<!-- End Estimate JS files -->
+
 {% block content %}
 <!-- Main content -->
 
