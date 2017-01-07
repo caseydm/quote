@@ -20,7 +20,7 @@ def new_estimate():
 @login_required
 def create_client():
     # validate data
-    if not request.json:
+    if not request.json or request.json['fname'] == '':
         abort(400)
 
     # create Client object
