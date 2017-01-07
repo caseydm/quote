@@ -81,3 +81,6 @@ class Client(db.Model):
     city = db.Column(db.String(100))
     state = db.Column(db.String(50))
     zip_code = db.Column(db.Integer())
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
