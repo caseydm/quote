@@ -4,8 +4,8 @@
 
 <!-- Estimate JS files -->
 {% block head %}
-<script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/estimate/editable.min.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/estimate/mockjax.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/estimate/select2.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/core/app.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/estimate/new_estimate.js') }}"></script>
 {% endblock %}
 <!-- End Estimate JS files -->
@@ -26,17 +26,16 @@
     <div class="panel-body no-padding-bottom">
         <div class="row">
             <div class="col-sm-6 content-group">
-                <h5><a href="#" id="text-field" data-type="text" data-inputclass="form-control" data-pk="1" data-title="Simple text field" class="editable editable-click" data-original-title="" title="">My Company</a></h5>
+                <h5>Katrina Meyer Photography</h5>
                 <ul class="list-condensed list-unstyled">
-                    <li>2269 Elba Lane</li>
-                    <li>Paris, France</li>
                     <li>888-555-2311</li>
+                    <li>katrina@katrinameyer.com</li>
                 </ul>
             </div>
 
             <div class="col-sm-6 content-group">
                 <div class="invoice-details">
-                    <h5 class="text-uppercase text-semibold">Estimate #49029</h5>
+                    <h5 class="text-uppercase text-semibold">Estimate #001</h5>
                     <ul class="list-condensed list-unstyled">
                         <li>Date: <span class="text-semibold">{{ today }}</span></li>
                     </ul>
@@ -46,7 +45,13 @@
 
         <div class="row">
             <div class="col-md-6 col-lg-9 content-group">
-                <span class="text-muted">For:</span>
+                <span class="text-muted">For:</span><br/>
+                <a data-toggle="modal" data-target="#modal_form_vertical" href="#">Add/Select Client</a>
+
+                <!-- modal form -->
+                {% include 'dashboard/estimate/add_client_modal.html' %}
+                <!-- end modal form -->
+
                 <ul class="list-condensed list-unstyled">
                     <li><h5>Rebecca Manes</h5></li>
                     <li>888-555-2311</li>
@@ -137,7 +142,6 @@
     </div>
 </div>
 <!-- /estimates panel -->
-
 
 <!-- /main content -->
  {% endblock %}
