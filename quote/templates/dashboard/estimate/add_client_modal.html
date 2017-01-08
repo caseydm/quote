@@ -11,7 +11,8 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
-                                <input type="text" id="fname" placeholder="First name" class="form-control" autofocus="autofocus">
+                                <input type="text" id="fname" name="fname" placeholder="First name" class="form-control" required="required" autofocus="autofocus">
+                                <label id="basic-error" class="validation-error-label" for="fname"></label>
                             </div>
 
                             <div class="col-sm-6">
@@ -23,7 +24,8 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
-                                <input type="text" id="email" placeholder="Email" class="form-control">
+                                <input type="email" id="email" name="email" placeholder="Email" class="form-control">
+                                <label id="email-error" class="validation-error-label validation-valid-label" for="email"></label>
                             </div>
 
                             <div class="col-sm-6">

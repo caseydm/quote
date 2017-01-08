@@ -33,12 +33,13 @@ $(function() {
             url : '/api/client',
             data: JSON.stringify(data),
             contentType: 'application/json; charset=UTF-8',
-            // success: function() {
-            //     $("#content").append('<li>Task:' + data.title + ' Description:' + data.description + 'Status: false</li>');
-            //     document.getElementById("taskForm").reset();
-            //}
             success: function() {
-                $('#add_client_modal').modal('hide')
+                $('#add_client_modal').modal('hide');
+                $('#add_client_link').hide();
+                document.getElementById("clientForm").reset();
+                $("#client_name").text(data.fname + ' ' + data.lname);
+                $("#client_phone").text(data.phone);
+                $("#client_email").text(data.email);
             }
         });
     });

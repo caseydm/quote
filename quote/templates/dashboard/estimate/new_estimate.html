@@ -46,16 +46,16 @@
         <div class="row">
             <div class="col-md-6 col-lg-9 content-group">
                 <span class="text-muted">For:</span><br/>
-                <a data-toggle="modal" data-target="#add_client_modal" href="#">Add/Select Client</a>
+                <span id="add_client_link"><a data-toggle="modal" data-target="#add_client_modal" href="#">Add Client</a></span>
 
                 <!-- modal form -->
                 {% include 'dashboard/estimate/add_client_modal.html' %}
                 <!-- end modal form -->
 
                 <ul class="list-condensed list-unstyled">
-                    <li><h5>Rebecca Manes</h5></li>
-                    <li>888-555-2311</li>
-                    <li><a href="#">rebecca@normandaxis.ltd</a></li>
+                    <h5><li id="client_name"></li></h5>
+                    <li id="client_phone"></li>
+                    <li id="client_email"></li>
                 </ul>
             </div>
         </div>
