@@ -2,7 +2,7 @@ from flask import Flask
 from flask_security import SQLAlchemyUserDatastore, user_registered
 from quote.config import ProdConfig
 from quote import public, dashboard, estimate
-from quote.extensions import db, mail, security
+from quote.extensions import db, mail, security, csrf
 from quote.security.models import User, Role
 
 
@@ -24,6 +24,7 @@ def register_extensions(app):
     mail.init_app(app)
     security.init_app(app, user_datastore)
     db.init_app(app)
+    csrf.init_app(app)
 
     @user_registered.connect_via(app)
     def when_user_registered(sender, user, confirm_token):

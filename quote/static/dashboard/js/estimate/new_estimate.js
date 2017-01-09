@@ -11,11 +11,11 @@
 
 $(function() {
     // Default initialization
-    $('.select').select2({
-        minimumResultsForSearch: Infinity,
-        width: 250,
-        placeholder: "Select Client"
-    });
+    // $('.select').select2({
+    //     minimumResultsForSearch: Infinity,
+    //     width: 250,
+    //     placeholder: "Select Client"
+    // });
 
     // Submit client
     $("#clientForm").submit(function (e) {
