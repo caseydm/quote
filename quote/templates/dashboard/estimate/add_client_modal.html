@@ -17,7 +17,7 @@
                             </div>
 
                             <div class="col-sm-6">
-                                <input type="text" id="lname" placeholder="Last name" class="form-control">
+                                <input type="text" id="lname" name="lname" placeholder="Last name" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                             </div>
 
                             <div class="col-sm-6">
-                                <input type="text" id="phone" placeholder="Phone number" data-mask="999-999-9999" class="form-control">
+                                <input type="text" id="phone" name="phone" placeholder="Phone number" data-mask="999-999-9999" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -41,22 +41,23 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="text" placeholder="Address line 1" class="form-control">
+                                    <input type="text" name="address1" placeholder="Address line 1" class="form-control">
                                 </div>
 
                                 <div class="col-sm-6">
-                                    <input type="text" placeholder="Address line 2" class="form-control">
+                                    <input type="text" name="address2" placeholder="Address line 2" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="text" placeholder="City" class="form-control">
+                                    <input type="text" name="city" placeholder="City" class="form-control">
                                 </div>
 
                                 <div class="col-sm-2">
                                     <select name="state" class='form-control'>
+                                        <option></option>
                                         <option value="AL">AL</option>
                                         <option value="AK">AK</option>
                                         <option value="AZ">AZ</option>
@@ -112,7 +113,7 @@
                                 </div>
 
                                 <div class="col-sm-4">
-                                    <input type="text" placeholder="Zip code" class="form-control">
+                                    <input type="text" name="zip_code" placeholder="Zip code" class="form-control">
                                 </div>
                             </div>
                         </div>
