@@ -43,5 +43,8 @@ class TestConfig(Config):
     ENV = 'test'
     TESTING = True
     DEBUG = True
+
+    SECURITY_PASSWORD_HASH = 'plaintext'
+
     SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL')
     WTF_CSRF_ENABLED = False  # Allows form testing
