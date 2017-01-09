@@ -14,6 +14,7 @@ class TestDashboardPages:
         response = client_loggedin.get('/dashboard/clients/new')
         assert b'<h2>New Client</h2>' in response.data
 
+
 class TestDashboardNewClient:
 
     def test_dashboard_add_client(self, client_loggedin):

@@ -47,6 +47,15 @@ def testapp(app, db):
 
 
 @pytest.fixture(scope='class')
+def testapp_loggedin(app, db):
+    """A Webtest app with logged in user."""
+    client = TestApp(app)
+    data = dict(email='gary@example.com', password='password', remember='y')
+    client.post('/login', params=data)
+    return client
+
+
+@pytest.fixture(scope='class')
 def client(app, db):
     """Flask test client"""
     return app.test_client()
