@@ -74,45 +74,34 @@
     </div>
 
     <div class="table-responsive">
-        <table class="table table-lg">
+        <table id="itemTable" class="table table-lg">
             <thead>
                 <tr>
-                    <th>Description</th>
-                    <th class="col-sm-1">Rate</th>
-                    <th class="col-sm-1">Hours</th>
+                    <th class="col-sm-6">Description</th>
+                    <th class="col-sm-2">Rate</th>
+                    <th class="col-sm-1">Qty</th>
                     <th class="col-sm-1">Total</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <h6 class="no-margin">Create UI design model</h6>
-                        <span class="text-muted">One morning, when Gregor Samsa woke from troubled.</span>
-                    </td>
-                    <td>$70</td>
-                    <td>57</td>
-                    <td><span class="text-semibold">$3,990</span></td>
-                </tr>
-                <tr>
-                    <td>
-                        <h6 class="no-margin">Support tickets list doesn't support commas</h6>
-                        <span class="text-muted">I'd have gone up to the boss and told him just what i think.</span>
-                    </td>
-                    <td>$70</td>
-                    <td>12</td>
-                    <td><span class="text-semibold">$840</span></td>
-                </tr>
-                <tr>
-                    <td>
-                        <h6 class="no-margin">Fix website issues on mobile</h6>
-                        <span class="text-muted">I am so happy, my dear friend, so absorbed in the exquisite.</span>
-                    </td>
-                    <td>$70</td>
-                    <td>31</td>
-                    <td><span class="text-semibold">$2,170</span></td>
-                </tr>
+                <form id="estimateItem" method="post">
+                    <tr>
+                        <td>
+                            <input name="description1" type="text" placeholder="Enter an item name" class="form-control">
+                            <h6 id="description1" class="no-margin"></h6>
+                        </td>
+                        <td><input name="rate1" type="text" class="form-control"><span id="rate1"></span></td>
+                        <td><input name="qty1" type="text" class="form-control"><span id="qty1">1</span></td>
+                        <td><span class="text-semibold">$0.00</span></td>
+                    </tr>
+                </form>
             </tbody>
         </table>
+          <div class="panel panel-flat no-border-radius">
+            <div class="panel-body text-center">
+                <a id="addRow">Add item</a>
+            </div>
+        </div>
     </div>
 
     <div class="panel-body">
