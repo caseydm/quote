@@ -49,6 +49,12 @@ $(function() {
                 $("input[name=" + element + i + "]").hide();
                 $("#" + element + i).show();
                 $("#" + element + i).text($("input[name=" + element + i + "]").val());
+                
+                if(element == 'rate') {
+                    // update line item total
+                    var total = $("#rate" + i).text() * $("#qty" + i).text();
+                    $("#lineTotal" + i).text(toCurrency(total));
+                }
             }
         });
 
@@ -66,6 +72,10 @@ $(function() {
                 $("input[name=qty" + i + "]").hide();
                 $('#qty' + i).show();
                 $('#qty' + i).text($("input[name=qty" + i + "]").val());
+                
+                // update line item total
+                var total = $("#rate" + i).text() * $("#qty" + i).text();
+                $("#lineTotal" + i).text(toCurrency(total));
             }
         });
 
@@ -83,14 +93,12 @@ $(function() {
     });
 
     function addRow(i) {
-        console.log(i);
-        
         var form = '<tr><td><input name="description' + i + '" type="text" placeholder="Enter an item name" class="form-control">' +
                     '<h6 id="description' + i + '" class="no-margin"></h6></td><td>' +
                     '<input name="rate' + i + '" type="text" class="form-control">' +
                     '<span id="rate' + i + '"></span></td><td>' +
                     '<input name="qty' + i + '" type="text" class="form-control">' + 
-                    '<span id="qty' + i + '">1</span></td><td><span class="text-semibold">$0.00</span></td></tr>'
+                    '<span id="qty' + i + '">1</span></td><td><span id="lineTotal' + i + '" class="text-semibold">$0.00</span></td></tr>'
 
         $('#itemTable tr:last').after(form);
 
@@ -99,4 +107,9 @@ $(function() {
         setQty(i);
     }
 
+    // format currency
+    function toCurrency(number) {
+        var currency = '$' + parseFloat(number, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString();
+        return currency;
+    }
 });

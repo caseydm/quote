@@ -90,9 +90,9 @@
                             <input name="description1" type="text" placeholder="Enter an item name" class="form-control">
                             <h6 id="description1" class="no-margin"></h6>
                         </td>
-                        <td><input name="rate1" type="text" class="form-control"><span id="rate1"></span></td>
+                        <td><input name="rate1" type="text" placeholder="$0.00" class="form-control"><span id="rate1"></span></td>
                         <td><input name="qty1" type="text" class="form-control"><span id="qty1">1</span></td>
-                        <td><span class="text-semibold">$0.00</span></td>
+                        <td><span id="lineTotal1" class="text-semibold">$0.00</span></td>
                     </tr>
                 </form>
             </tbody>
@@ -117,7 +117,7 @@
                             <tbody>
                                 <tr>
                                     <th>Subtotal:</th>
-                                    <td class="text-right">$7,000</td>
+                                    <td class="text-right"><span id="subTotal">$0.00</span></td>
                                 </tr>
                                 <tr>
                                     <th>Tax: <span class="text-regular">(25%)</span></th>
