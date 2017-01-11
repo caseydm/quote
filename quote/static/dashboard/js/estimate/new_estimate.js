@@ -43,27 +43,37 @@ $(function() {
     setItemForm('rate', count);
     setQty(count);
 
+    // makes description and rate fields show and hide
     function setItemForm(element, i) {
         $("input[name=" + element + i +  "]").focusout(function() {
-            if($("input[name=" + element + i + "]").val()) { 
+            
+            // implement only if field is not empty
+            if($("input[name=" + element + i + "]").val()) {
+                // hide input
                 $("input[name=" + element + i + "]").hide();
+                // show text element
                 $("#" + element + i).show();
-                $("#" + element + i).text($("input[name=" + element + i + "]").val());
-                
+                // set text element same as input
                 if(element == 'rate') {
+                    $("#" + element + i).text( toCurrency($("input[name=" + element + i + "]").val()) );
+
                     // update line item total
-                    var total = $("#rate" + i).text() * $("#qty" + i).text();
+                    var total = toNumber( $("#rate" + i).text() ) * $("#qty" + i).text();
                     $("#lineTotal" + i).text(toCurrency(total));
+                } else {
+                    $("#" + element + i).text($("input[name=" + element + i + "]").val());
                 }
             }
         });
 
         $("#" + element + i).click(function() {
+            // show input and hide text
             $("input[name=" + element + i + "]").show().focus();
             $("#" + element + i).hide();
         });
     }
 
+    // set quantity field
     function setQty(i) {
         $("input[name=qty" + i + "]").hide();
 
@@ -74,7 +84,7 @@ $(function() {
                 $('#qty' + i).text($("input[name=qty" + i + "]").val());
                 
                 // update line item total
-                var total = $("#rate" + i).text() * $("#qty" + i).text();
+                var total = toNumber( $("#rate" + i).text() ) * $("#qty" + i).text();
                 $("#lineTotal" + i).text(toCurrency(total));
             }
         });
@@ -95,7 +105,7 @@ $(function() {
     function addRow(i) {
         var form = '<tr><td><input name="description' + i + '" type="text" placeholder="Enter an item name" class="form-control">' +
                     '<h6 id="description' + i + '" class="no-margin"></h6></td><td>' +
-                    '<input name="rate' + i + '" type="text" class="form-control">' +
+                    '<input name="rate' + i + '" type="text" placeholder="$0.00" class="form-control">' +
                     '<span id="rate' + i + '"></span></td><td>' +
                     '<input name="qty' + i + '" type="text" class="form-control">' + 
                     '<span id="qty' + i + '">1</span></td><td><span id="lineTotal' + i + '" class="text-semibold">$0.00</span></td></tr>'
@@ -111,5 +121,10 @@ $(function() {
     function toCurrency(number) {
         var currency = '$' + parseFloat(number, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString();
         return currency;
+    }
+
+    function toNumber(currency) {
+        var number = Number(currency.replace(/[^0-9\.]+/g,""));
+        return number;
     }
 });

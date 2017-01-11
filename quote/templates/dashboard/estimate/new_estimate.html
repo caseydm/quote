@@ -28,10 +28,10 @@
 <!-- Estimates panel -->
 <div class="panel panel-white">
     <div class="panel-heading">
-        <h6 class="panel-title">Estimate<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+        <h6 class="panel-title">New Estimate<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
         <div class="heading-elements">
             <button type="button" class="btn btn-default btn-xs heading-btn"><i class="icon-file-check position-left"></i> Save</button>
-            <button type="button" class="btn btn-default btn-xs heading-btn"><i class="icon-printer position-left"></i> Print</button>
+            <button type="button" class="btn btn-default btn-xs heading-btn"><i class="icon-printer position-left"></i> Send</button>
         </div>
     </div>
 
@@ -58,7 +58,7 @@
         <div class="row">
             <div class="col-md-6 col-lg-9 content-group">
                 <span class="text-muted">For:</span><br/>
-                <span id="add_client_link"><a data-toggle="modal" data-target="#add_client_modal" href="#">Add Client</a></span>
+                <span id="add_client_link"><a data-toggle="modal" data-target="#add_client_modal" href="#">Add a Client</a></span>
 
                 <!-- modal form -->
                 {% include 'dashboard/estimate/add_client_modal.html' %}
@@ -131,9 +131,6 @@
                         </table>
                     </div>
 
-                    <div class="text-right">
-                        <button type="button" class="btn btn-primary btn-labeled"><b><i class="icon-paperplane"></i></b> Send invoice</button>
-                    </div>
                 </div>
             </div>
         </div>
