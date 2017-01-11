@@ -92,7 +92,7 @@
                         </td>
                         <td><input name="rate1" type="text" placeholder="$0.00" class="form-control"><span id="rate1"></span></td>
                         <td><input name="qty1" type="text" class="form-control"><span id="qty1">1</span></td>
-                        <td><span id="lineTotal1" class="text-semibold">$0.00</span></td>
+                        <td><span id="lineTotal1" class="lineTotal text-semibold">$0.00</span></td>
                     </tr>
                 </form>
             </tbody>
@@ -120,12 +120,12 @@
                                     <td class="text-right"><span id="subTotal">$0.00</span></td>
                                 </tr>
                                 <tr>
-                                    <th>Tax: <span class="text-regular">(25%)</span></th>
-                                    <td class="text-right">$1,750</td>
+                                    <th>Tax <span id="tax" class="text-regular">(0%)</span>:</th>
+                                    <td class="text-right">$0.00</td>
                                 </tr>
                                 <tr>
                                     <th>Total:</th>
-                                    <td class="text-right text-primary"><h5 class="text-semibold">$8,750</h5></td>
+                                    <td class="text-right text-primary"><h5 id="total" class="text-semibold">$0.00</h5></td>
                                 </tr>
                             </tbody>
                         </table>

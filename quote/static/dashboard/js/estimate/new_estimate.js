@@ -1,6 +1,8 @@
-// new estimate custom scripts
-
+/**
+New Estimate page custom scripts
+**/  
 $(function() {
+    
     // submit new client form via ajax 
     $("#clientForm").submit(function (e) {
         e.preventDefault();
@@ -33,7 +35,9 @@ $(function() {
         });
     });
 
-    // add item form
+    /**
+    Add item form
+    **/  
 
     // first item counter
     var count = 1;
@@ -60,6 +64,9 @@ $(function() {
                     // update line item total
                     var total = toNumber( $("#rate" + i).text() ) * $("#qty" + i).text();
                     $("#lineTotal" + i).text(toCurrency(total));
+
+                    // update subtotal
+                    calcTotals();
                 } else {
                     $("#" + element + i).text($("input[name=" + element + i + "]").val());
                 }
@@ -86,6 +93,9 @@ $(function() {
                 // update line item total
                 var total = toNumber( $("#rate" + i).text() ) * $("#qty" + i).text();
                 $("#lineTotal" + i).text(toCurrency(total));
+
+                // update subtotal
+                calcTotals();
             }
         });
 
@@ -96,7 +106,9 @@ $(function() {
         });
     }
 
-    // add an item row
+    /**
+    Add a new item row
+    **/  
     $("#addRow").click(function() {
         count += 1;
         addRow(count);
@@ -108,7 +120,7 @@ $(function() {
                     '<input name="rate' + i + '" type="text" placeholder="$0.00" class="form-control">' +
                     '<span id="rate' + i + '"></span></td><td>' +
                     '<input name="qty' + i + '" type="text" class="form-control">' + 
-                    '<span id="qty' + i + '">1</span></td><td><span id="lineTotal' + i + '" class="text-semibold">$0.00</span></td></tr>'
+                    '<span id="qty' + i + '">1</span></td><td><span id="lineTotal' + i + '" class="lineTotal text-semibold">$0.00</span></td></tr>'
 
         $('#itemTable tr:last').after(form);
 
@@ -116,6 +128,9 @@ $(function() {
         setItemForm('rate', i);
         setQty(i);
     }
+    /**
+    Utilities
+    **/  
 
     // format currency
     function toCurrency(number) {
@@ -126,5 +141,21 @@ $(function() {
     function toNumber(currency) {
         var number = Number(currency.replace(/[^0-9\.]+/g,""));
         return number;
+    }
+
+    // calculate and display subTotal, tax, and total
+    function calcTotals() {
+        
+        // add line items
+        var subTotal = 0;
+        $('.lineTotal').each(function(i, obj) {
+            subTotal += toNumber( $(this).text() ) || 0;
+        });
+
+        // dispaly result
+        $('#subTotal').text( toCurrency( subTotal ) );
+
+        // set total to same as subTotal
+        $('#total').text( toCurrency ( subTotal ));
     }
 });
