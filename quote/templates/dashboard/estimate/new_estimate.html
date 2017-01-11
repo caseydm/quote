@@ -4,8 +4,8 @@
 
 <!-- Estimate JS files -->
 {% block head %}
-<script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/estimate/select2.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/core/app.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/estimate/editable.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/estimate/new_estimate.js') }}"></script>
 <script type="text/javascript">
     // CSRF protection for ajax submit
@@ -120,8 +120,8 @@
                                     <td class="text-right"><span id="subTotal">$0.00</span></td>
                                 </tr>
                                 <tr>
-                                    <th>Tax <span id="tax" class="text-regular">(0%)</span>:</th>
-                                    <td class="text-right">$0.00</td>
+                                    <th>Tax <span class="text-regular"><a id="taxField" href="#" data-type='select'>0%</a></span>:</th>
+                                    <td class="text-right"><span id="tax">$0.00</span></td>
                                 </tr>
                                 <tr>
                                     <th>Total:</th>

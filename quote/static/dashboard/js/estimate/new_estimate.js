@@ -158,4 +158,26 @@ $(function() {
         // set total to same as subTotal
         $('#total').text( toCurrency ( subTotal ));
     }
+
+    // tax field
+    $('#taxField').editable({
+        placement: 'left',
+        value: 0,
+        source: [
+            {value: 0, text: '0%'},
+            {value: 1, text: '1%'},
+            {value: 2, text: '2%'},
+            {value: 3, text: '3%'},
+            {value: 4, text: '4%'}
+        ],
+        success: function(response, newValue) {
+            taxTotal = (toNumber( $('#subTotal').text() ) * newValue) / 100;
+            $('#tax').text( toCurrency( taxTotal ) );
+        }
+    });
+
+    // function updateTax(taxRate) {
+    //     var taxTotal = toNumber( $('#subTotal').text ) * taxRate;
+    //     console.log(taxTotal);
+    // }
 });
