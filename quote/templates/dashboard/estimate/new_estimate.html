@@ -58,7 +58,7 @@
         <div class="row">
             <div class="col-md-6 col-lg-9 content-group">
                 <span class="text-muted">For:</span><br/>
-                <span id="add_client_link"><a data-toggle="modal" data-target="#add_client_modal" href="#">Add a Client</a></span>
+                <span id="add_client_link"><h6><a data-toggle="modal" data-target="#add_client_modal" href="#">Add a Client</a></h6></span>
 
                 <!-- modal form -->
                 {% include 'dashboard/estimate/add_client_modal.html' %}
@@ -69,6 +69,8 @@
                     <li id="client_phone"></li>
                     <li id="client_email"></li>
                 </ul>
+                <br/>
+                <input name="note1" type="text" class="form-control" placeholder="Add a note or summary (optional)"><span id="note1"></span>
             </div>
         </div>
     </div>
@@ -135,8 +137,8 @@
             </div>
         </div>
 
-        <h6>Other information</h6>
-        <p class="text-muted">Thank you for using Limitless. This invoice can be paid via PayPal, Bank transfer, Skrill or Payoneer. Payment is due within 30 days from the date of delivery. Late payment is possible, but with with a fee of 10% per month. Company registered in England and Wales #6893003, registered office: 3 Goodman Street, London E1 8BF, United Kingdom. Phone number: 888-555-2311</p>
+        <h6>Estimate Terms</h6>
+        <p class="text-muted"><span id="terms">Estimates are valid for 30 days from the date of issue. Quotes are for the original job description as described by the client. Any subsequent changes, whether made orally or in writing, may result in additional charges.</span><textarea name="terms" rows="3" class="form-control" placeholder="Add terms (optional)"></textarea></p>
     </div>
 </div>
 <!-- /estimates panel -->

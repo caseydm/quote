@@ -45,7 +45,9 @@ $(function() {
     // initiliaze form
     setItemForm('description', count);
     setItemForm('rate', count);
+    setItemForm('note', count);
     setQty(count);
+    setTerms();
 
     // makes description and rate fields show and hide
     function setItemForm(element, i) {
@@ -106,6 +108,26 @@ $(function() {
         });
     }
 
+    function setTerms() {// set terms
+        $('textarea[name="terms"]').hide();
+
+        $("#terms").click(function() {
+            // hide text and reveal input
+            $('textarea[name="terms"]').val($('#terms').text());
+            $('textarea[name="terms"]').show().focus();
+            $('#terms').hide();
+        });
+
+        $('textarea[name="terms"]').focusout(function() {
+            if($('textarea[name="terms"]').val()) {
+                $('textarea[name="terms"]').hide();
+                $('#terms').show();
+                $('#terms').text($('textarea[name="terms"]').val());
+            }
+        });
+    }
+
+
     /**
     Add a new item row
     **/  
@@ -163,9 +185,11 @@ $(function() {
     }
 
     // tax field
+
     $('#taxField').editable({
         placement: 'left',
         value: 0,
+        inputclass: 'width-100',
         source: [
             {value: 0, text: '0%'},
             {value: 1, text: '1%'},
