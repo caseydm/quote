@@ -6,6 +6,7 @@
 {% block head %}
 <script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/core/app.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/estimate/editable.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/estimate/validate.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/estimate/new_estimate.js') }}"></script>
 <script type="text/javascript">
     // CSRF protection for ajax submit
@@ -70,6 +71,7 @@
                     <li id="client_email"></li>
                 </ul>
                 <br/>
+                <form id="newEstimateForm" method="post">
                 <input name="note1" type="text" class="form-control" placeholder="Add a note or summary (optional)"><span id="note1"></span>
             </div>
         </div>
@@ -86,7 +88,6 @@
                 </tr>
             </thead>
             <tbody>
-                <form id="estimateItem" method="post">
                     <tr>
                         <td>
                             <input name="description1" type="text" placeholder="Enter an item name" class="form-control">
@@ -96,7 +97,6 @@
                         <td><input name="qty1" type="text" class="form-control"><span id="qty1">1</span></td>
                         <td><span id="lineTotal1" class="lineTotal text-semibold">$0.00</span></td>
                     </tr>
-                </form>
             </tbody>
         </table>
           <div class="panel panel-flat no-border-radius">
@@ -141,6 +141,7 @@
         <p class="text-muted"><span id="terms">Estimates are valid for 30 days from the date of issue. Quotes are for the original job description as described by the client. Any subsequent changes, whether made orally or in writing, may result in additional charges.</span><textarea name="terms" rows="3" class="form-control" placeholder="Add terms (optional)"></textarea></p>
     </div>
 </div>
+</form>
 <!-- /estimates panel -->
 
 <!-- /main content -->

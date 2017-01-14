@@ -88,6 +88,7 @@ $(function() {
 
         $("input[name=qty" + i + "]").focusout(function() {
             if($("input[name=qty" + i + "]").val()) {
+                $('.error').remove();
                 $("input[name=qty" + i + "]").hide();
                 $('#qty' + i).show();
                 $('#qty' + i).text($("input[name=qty" + i + "]").val());
@@ -213,4 +214,15 @@ $(function() {
         taxTotal = toNumber( $('#subTotal').text() ) * (taxRate / 100);
         $('#tax').text( toCurrency( taxTotal ) );
     }
+
+    // // validation
+    // var validator = $("#newEstimateForm").validate({
+    //     onfocusout: false,
+    //     debug: true,
+    //     success: function(label,element) {
+    //         label.parent().removeClass('error');
+    //         label.remove(); 
+    //     }
+    // });
+
 });
