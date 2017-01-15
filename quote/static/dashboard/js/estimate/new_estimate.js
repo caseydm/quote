@@ -35,6 +35,25 @@ $(function() {
         });
     });
 
+    // ensure client added before save
+    $("#add_client_link [rel='tooltip']").tooltip({
+        trigger: 'manual',
+        title: 'Who is this estimate for?',
+        placement: 'right'
+    });
+
+    $('#save').click(function () {
+        if ( $('#add_client_link').css('display') != 'none') {
+            $("[rel='tooltip']").tooltip('show');
+        } else {
+            saveForm();
+        }
+    });
+
+    $('#add_client_link').click(function () {
+        $("#add_client_link [rel='tooltip']").tooltip('hide');
+    });
+
     /**
     Add item form
     **/  
@@ -214,15 +233,5 @@ $(function() {
         taxTotal = toNumber( $('#subTotal').text() ) * (taxRate / 100);
         $('#tax').text( toCurrency( taxTotal ) );
     }
-
-    // // validation
-    // var validator = $("#newEstimateForm").validate({
-    //     onfocusout: false,
-    //     debug: true,
-    //     success: function(label,element) {
-    //         label.parent().removeClass('error');
-    //         label.remove(); 
-    //     }
-    // });
 
 });
