@@ -4,6 +4,7 @@ from flask import Blueprint, render_template, abort, request, jsonify
 from flask_security import login_required, current_user
 import arrow
 from quote.dashboard.models import Client
+from quote.estimate.models import Estimate, LineItem
 from quote.extensions import db
 
 blueprint = Blueprint('estimate', __name__, static_folder='../static')

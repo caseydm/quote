@@ -11,7 +11,7 @@ class Estimate(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     estimate_number = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    client_id = db.Column(db.Integer, db.ForeignKey('client.id'), nullable=False)
+    client_id = db.Column(db.Integer, db.ForeignKey('clients.id'), nullable=False)
     line_items = db.relationship('LineItem', backref='estimate', lazy='dynamic')
     terms = db.Column(db.Text, nullable=True)
     note = db.Column(db.Text, nullable=True)
@@ -24,7 +24,7 @@ class LineItem(db.Model):
     __tablename__ = 'line_items'
 
     id = db.Column(db.Integer, primary_key=True)
-    invoice_estimate_id = db.Column(db.Integer, db.ForeignKey('estimate.id'))
+    invoice_estimate_id = db.Column(db.Integer, db.ForeignKey('estimates.id'))
     description = db.Column(db.String(300), nullable=False)
     rate = db.Column(db.Numeric(8, 2), nullable=False)
     qty = db.Column(db.Float, nullable=False)
