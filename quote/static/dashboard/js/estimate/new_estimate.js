@@ -3,6 +3,36 @@ New Estimate page custom scripts
 **/  
 $(function() {
     
+    TERMS = 'Estimates are valid for 30 days from the date of issue. ' + 
+            'Quotes are for the original job description as described by the client. ' + 
+            'Any subsequent changes, whether made orally or in writing, may result in additional charges.';
+
+    // object to hold form data for ajax submit
+    var jsonLoad = {
+        type: 'estimate',
+        note: null,
+        terms: TERMS,
+        tax: 0,
+        items: [
+            {
+                1 :
+                {
+                    description: null,
+                    rate: null,
+                    qty: 1
+                }
+            }
+        ]
+    };
+
+    function getItem(key) {
+        var item;
+        jsonLoad.items.some(function (object) {
+            return item = object[key];
+        });
+        return item;
+    }
+
     // submit new client form via ajax 
     $("#clientForm").submit(function (e) {
         e.preventDefault();
@@ -111,6 +141,11 @@ $(function() {
                 $("input[name=qty" + i + "]").hide();
                 $('#qty' + i).show();
                 $('#qty' + i).text($("input[name=qty" + i + "]").val());
+
+                // set qty in jsonLoad
+                getItem(i).qty = $(this).val();
+
+                console.log(jsonLoad);
                 
                 // update line item total
                 var total = toNumber( $("#rate" + i).text() ) * $("#qty" + i).text();
