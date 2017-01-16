@@ -112,8 +112,6 @@ $(function() {
                 // update value in jsonLoad
                 getItem(i)[element] = $("input[name=" + element + i + "]").val();
 
-                console.log(jsonLoad);
-
                 // set text element same as input
                 if(element == 'rate') {
                     $("#" + element + i).text( toCurrency($("input[name=" + element + i + "]").val()) );
@@ -182,6 +180,9 @@ $(function() {
                 $('textarea[name="terms"]').hide();
                 $('#terms').show();
                 $('#terms').text($('textarea[name="terms"]').val());
+
+                // set terms in jsonLoad
+                jsonLoad.terms = $(this).val();
             }
         });
     }
