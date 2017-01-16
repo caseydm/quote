@@ -271,6 +271,9 @@ $(function() {
         success: function(response, newValue) {
             updateTaxDisplay(newValue);
             $('#total').text( toCurrency ( toNumber( $('#subTotal').text() ) + toNumber($('#tax').text() ) ));
+
+            jsonLoad.tax = toNumber(newValue);
+            console.log(jsonLoad);
         }
     });
 
