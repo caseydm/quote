@@ -10,6 +10,7 @@ $(function() {
     // object to hold form data for ajax submit
     var jsonLoad = {
         type: 'estimate',
+        estimate_id: 3,
         client_id: null,
         note: null,
         terms: TERMS,
@@ -64,8 +65,6 @@ $(function() {
                 $("#client_email").text(data.email);
 
                 jsonLoad.client_id = response.id;
-
-                console.log(jsonLoad);
             }
         });
     });
@@ -126,7 +125,7 @@ $(function() {
                     calcTotals();
 
                     // update value in jsonLoad
-                    getItem(i).rate = $(this).val();
+                    getItem(i).rate = parseFloat( $(this).val() );
                 } else if (element == 'note') {
                     $("#" + element + i).text($("input[name=" + element + i + "]").val());
 
@@ -160,7 +159,7 @@ $(function() {
                 $('#qty' + i).text($("input[name=qty" + i + "]").val());
 
                 // set qty in jsonLoad
-                getItem(i).qty = $(this).val();
+                getItem(i).qty = parseFloat( $(this).val() );
                 
                 // update line item total
                 var total = toNumber( $("#rate" + i).text() ) * $("#qty" + i).text();
