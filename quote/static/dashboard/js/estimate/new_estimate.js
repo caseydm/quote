@@ -108,6 +108,12 @@ $(function() {
                 $("input[name=" + element + i + "]").hide();
                 // show text element
                 $("#" + element + i).show();
+
+                // update value in jsonLoad
+                getItem(i)[element] = $("input[name=" + element + i + "]").val();
+
+                console.log(jsonLoad);
+
                 // set text element same as input
                 if(element == 'rate') {
                     $("#" + element + i).text( toCurrency($("input[name=" + element + i + "]").val()) );
@@ -144,8 +150,6 @@ $(function() {
 
                 // set qty in jsonLoad
                 getItem(i).qty = $(this).val();
-
-                console.log(jsonLoad);
                 
                 // update line item total
                 var total = toNumber( $("#rate" + i).text() ) * $("#qty" + i).text();
@@ -200,6 +204,11 @@ $(function() {
                     '<span id="qty' + i + '">1</span></td><td><span id="lineTotal' + i + '" class="lineTotal text-semibold">$0.00</span></td></tr>'
 
         $('#itemTable tr:last').after(form);
+
+        // add another line to jsonLoad
+        var obj = {};
+        obj[i] = { description: null, rate: null, qty: 1 };
+        jsonLoad.items.push(obj);
 
         setItemForm('description', i);
         setItemForm('rate', i);
