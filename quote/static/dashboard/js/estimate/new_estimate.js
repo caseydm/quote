@@ -50,7 +50,7 @@ $(function() {
             url : '/api/client',
             data: JSON.stringify(data),
             contentType: 'application/json; charset=UTF-8',
-            success: function() {
+            success: function(response) {
                 // hide form elements
                 $('#add_client_modal').modal('hide');
                 $('#add_client_link').hide();
@@ -62,6 +62,10 @@ $(function() {
                 $("#client_name").text(data.fname + ' ' + data.lname);
                 $("#client_phone").text(data.phone);
                 $("#client_email").text(data.email);
+
+                jsonLoad.client_id = response.id;
+
+                console.log(jsonLoad);
             }
         });
     });
