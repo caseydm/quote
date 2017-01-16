@@ -10,6 +10,7 @@ $(function() {
     // object to hold form data for ajax submit
     var jsonLoad = {
         type: 'estimate',
+        client_id: null,
         note: null,
         terms: TERMS,
         tax: 0,
@@ -109,9 +110,6 @@ $(function() {
                 // show text element
                 $("#" + element + i).show();
 
-                // update value in jsonLoad
-                getItem(i)[element] = $("input[name=" + element + i + "]").val();
-
                 // set text element same as input
                 if(element == 'rate') {
                     $("#" + element + i).text( toCurrency($("input[name=" + element + i + "]").val()) );
@@ -122,8 +120,19 @@ $(function() {
 
                     // update subtotal
                     calcTotals();
-                } else {
+
+                    // update value in jsonLoad
+                    getItem(i).rate = $(this).val();
+                } else if (element == 'note') {
                     $("#" + element + i).text($("input[name=" + element + i + "]").val());
+
+                    jsonLoad.note = $(this).val();
+                    console.log(jsonLoad);
+
+                } else if (element == 'description') {
+                    $("#" + element + i).text($("input[name=" + element + i + "]").val());
+
+                    getItem(i).description = $(this).val();
                 }
             }
         });
@@ -273,7 +282,6 @@ $(function() {
             $('#total').text( toCurrency ( toNumber( $('#subTotal').text() ) + toNumber($('#tax').text() ) ));
 
             jsonLoad.tax = toNumber(newValue);
-            console.log(jsonLoad);
         }
     });
 
