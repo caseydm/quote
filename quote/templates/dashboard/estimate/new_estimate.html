@@ -12,6 +12,7 @@
     // CSRF protection for ajax submit
     var csrf_token = "{{ csrf_token() }}";
     var current_user = "{{ current_user.id }}";
+    var next_estimate = "{{ next_estimate }}";
 
     $.ajaxSetup({
         beforeSend: function(xhr, settings) {
@@ -49,7 +50,7 @@
 
             <div class="col-sm-6 content-group">
                 <div class="invoice-details">
-                    <h5 class="text-uppercase text-semibold">Estimate #001</h5>
+                    <h5 class="text-uppercase text-semibold">Estimate #{{ next_estimate }}</h5>
                     <ul class="list-condensed list-unstyled">
                         <li>Date: <span class="text-semibold">{{ today }}</span></li>
                     </ul>

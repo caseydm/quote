@@ -9,7 +9,7 @@ $(function() {
 
     // object to hold form data for ajax submit
     var jsonLoad = {
-        estimate_number: 3,
+        estimate_number: next_estimate,
         user_id: current_user,
         client_id: null,
         note: null,

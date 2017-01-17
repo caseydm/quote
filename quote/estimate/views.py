@@ -14,7 +14,25 @@ blueprint = Blueprint('estimate', __name__, static_folder='../static')
 @login_required
 def new_estimate():
     today = arrow.now().format('MMMM DD, YYYY')
-    return render_template('dashboard/estimate/new_estimate.html', today=today)
+
+    # get highest estimate number from db
+    query = db.session.query(
+        db.func.max(Estimate.estimate_number)
+    ).filter(Estimate.user_id == current_user.id).scalar()
+
+    if query:
+        next_estimate = query + 1
+    else:
+        next_estimate = 1
+
+    # format next_estimate with leading zeros
+    next_estimate = '{0:04d}'.format(next_estimate)
+
+    return render_template(
+        'dashboard/estimate/new_estimate.html',
+        today=today,
+        next_estimate=next_estimate
+    )
 
 
 @blueprint.route('/api/client', methods=['POST'])
