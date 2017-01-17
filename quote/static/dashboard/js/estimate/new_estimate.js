@@ -9,12 +9,12 @@ $(function() {
 
     // object to hold form data for ajax submit
     var jsonLoad = {
-        type: 'estimate',
-        estimate_id: 3,
+        estimate_number: 3,
+        user_id: current_user,
         client_id: null,
         note: null,
         terms: TERMS,
-        tax: 0,
+        tax_rate: 0,
         items: [
             {
                 1 :
@@ -80,7 +80,15 @@ $(function() {
         if ( $('#add_client_link').css('display') != 'none') {
             $("[rel='tooltip']").tooltip('show');
         } else {
-            saveForm();
+            $.ajax({
+                type : 'POST',
+                url : '/api/estimate',
+                data: JSON.stringify(jsonLoad),
+                contentType: 'application/json; charset=UTF-8',
+                success: function(response) {
+                    console.log(response);
+                }
+            });
         }
     });
 
@@ -284,7 +292,7 @@ $(function() {
             updateTaxDisplay(newValue);
             $('#total').text( toCurrency ( toNumber( $('#subTotal').text() ) + toNumber($('#tax').text() ) ));
 
-            jsonLoad.tax = toNumber(newValue);
+            jsonLoad.tax_rate = toNumber(newValue);
         }
     });
 

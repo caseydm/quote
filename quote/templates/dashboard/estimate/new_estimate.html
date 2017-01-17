@@ -11,6 +11,7 @@
 <script type="text/javascript">
     // CSRF protection for ajax submit
     var csrf_token = "{{ csrf_token() }}";
+    var current_user = "{{ current_user.id }}";
 
     $.ajaxSetup({
         beforeSend: function(xhr, settings) {

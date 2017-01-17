@@ -17,6 +17,9 @@ class Estimate(db.Model):
     note = db.Column(db.Text, nullable=True)
     tax_rate = db.Column(db.Float, nullable=False)
 
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
 
 class LineItem(db.Model):
     """Estimate model"""

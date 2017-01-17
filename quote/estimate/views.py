@@ -38,3 +38,36 @@ def create_client():
     db.session.commit()
 
     return jsonify(client.as_dict()), 201
+
+
+@blueprint.route('/api/estimate', methods=['POST'])
+@login_required
+def save_estimate():
+    # validate data
+    if not request.json:
+        abort(400)
+
+    estimate = Estimate(
+        estimate_number=request.json['estimate_number'],
+        user_id=request.json['user_id'],
+        client_id=request.json['client_id'],
+        terms=request.json['terms'],
+        note=request.json['note'],
+        tax_rate=request.json['tax_rate']
+    )
+
+    estimate.line_items = [
+        LineItem(
+            description='Session Fee',
+            rate=300,
+            qty=2),
+        LineItem(
+            description='Album',
+            rate=600,
+            qty=3),
+    ]
+
+    db.session.add(estimate)
+    db.session.commit()
+
+    return jsonify(estimate.as_dict()), 201
