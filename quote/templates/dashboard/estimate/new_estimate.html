@@ -7,6 +7,8 @@
 <script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/core/app.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/estimate/editable.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/estimate/validate.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/estimate/spin.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/estimate/ladda.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='dashboard/js/estimate/new_estimate.js') }}"></script>
 <script type="text/javascript">
     // CSRF protection for ajax submit
@@ -33,8 +35,11 @@
     <div class="panel-heading">
         <h6 class="panel-title">New Estimate<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
         <div class="heading-elements">
-            <button id="save" type="button" class="btn btn-default btn-xs heading-btn"><i class="icon-file-check position-left"></i> Save</button>
-            <button type="button" class="btn btn-default btn-xs heading-btn"><i class="icon-printer position-left"></i> Send</button>
+            <button type="button" id="save" class="btn btn-default btn-xs heading-btn btn-ladda btn-ladda-spinner ladda-button" data-style="expand-left" data-spinner-color="#333" data-spinner-size="20">
+                <span class="ladda-label">Save</span>
+                <span class="ladda-spinner"></span>
+            </button>
+            {# <button id="save" type="button" class="btn btn-default btn-xs heading-btn"><i class="icon-file-check position-left"></i> Save</button> #}
         </div>
     </div>
 

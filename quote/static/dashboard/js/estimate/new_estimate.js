@@ -80,13 +80,19 @@ $(function() {
         if ( $('#add_client_link').css('display') != 'none') {
             $("[rel='tooltip']").tooltip('show');
         } else {
+            // spinner button for save
+            var l = Ladda.create(this);
+            l.start();
+
             $.ajax({
                 type : 'POST',
                 url : '/api/estimate',
                 data: JSON.stringify(jsonLoad),
                 contentType: 'application/json; charset=UTF-8',
                 success: function(response) {
-                    alert('Estimate saved');
+                    // Stop loading
+                    $( '#save' ).text('Saved!');
+                    l.stop();
                 }
             });
         }
