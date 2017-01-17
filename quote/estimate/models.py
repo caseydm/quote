@@ -27,6 +27,7 @@ class LineItem(db.Model):
     __tablename__ = 'line_items'
 
     id = db.Column(db.Integer, primary_key=True)
+    order = db.Column(db.Integer, nullable=False)
     invoice_estimate_id = db.Column(db.Integer, db.ForeignKey('estimates.id'))
     description = db.Column(db.String(300), nullable=False)
     rate = db.Column(db.Numeric(8, 2), nullable=False)

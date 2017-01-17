@@ -56,16 +56,19 @@ def save_estimate():
         tax_rate=request.json['tax_rate']
     )
 
-    estimate.line_items = [
-        LineItem(
-            description='Session Fee',
-            rate=300,
-            qty=2),
-        LineItem(
-            description='Album',
-            rate=600,
-            qty=3),
-    ]
+    # process line items
+    line_items = request.json['items']
+
+    for line in line_items:
+        for order, line in line.items():
+            estimate.line_items.append(
+                LineItem(
+                    order=order,
+                    description=line['description'],
+                    rate=line['rate'],
+                    qty=line['qty']
+                )
+            )
 
     db.session.add(estimate)
     db.session.commit()
