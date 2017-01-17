@@ -76,6 +76,7 @@ $(function() {
         placement: 'right'
     });
 
+    // save estimate form
     $('#save').click(function () {
         if ( $('#add_client_link').css('display') != 'none') {
             $("[rel='tooltip']").tooltip('show');
@@ -96,6 +97,11 @@ $(function() {
                 }
             });
         }
+    });
+
+    // cancel estimate form
+    $('#cancel').click(function () {
+        window.location.replace("/dashboard");
     });
 
     $('#add_client_link').click(function () {
