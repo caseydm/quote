@@ -16,8 +16,10 @@ class Estimate(db.Model):
     line_items = db.relationship('LineItem', backref='estimate', lazy='dynamic')
     terms = db.Column(db.Text, nullable=True)
     note = db.Column(db.Text, nullable=True)
-    tax_rate = db.Column(db.Float, nullable=False)
     date_of_issue = db.Column(db.DateTime, default=datetime.datetime.utcnow, nullable=False)
+    tax_rate = db.Column(db.Float, nullable=False)
+    sub_total = db.Column(db.Numeric(8, 2), nullable=False)
+    tax_total = db.Column(db.Numeric(8, 2), nullable=False)
     total = db.Column(db.Numeric(8, 2), nullable=False)
     client = db.relationship('Client')
 

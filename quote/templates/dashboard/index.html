@@ -33,7 +33,6 @@
         <ul class="dropdown-menu dropdown-menu-right">
             <li><a href="{{ url_for('dashboard.new_client') }}"> Client</a></li>
             <li><a href="{{ url_for('estimate.new_estimate') }}"> Estimate</a></li>
-            <li><a href="#"> Invoice</a></li>
         </ul>
     </div>
   </div>
@@ -61,10 +60,10 @@
             <tbody>
                 {% for estimate in estimates %}
                     <tr>
-                        <td><a href="#">{{ estimate.estimate_number }}</a></td>
+                        <td><a href="#">{{ '{:04d}'.format(estimate.estimate_number) }}</a></td>
                         <td>{{ estimate.client.fname }} {{ estimate.client.lname }}</td>
                         <td>{{ estimate.date_of_issue.strftime('%b %e, %Y') }}</td>
-                        <td>1,800.00</td>
+                        <td>${{ estimate.total }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

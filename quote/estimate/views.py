@@ -65,7 +65,7 @@ def save_estimate():
     if not request.json:
         abort(400)
 
-    required_fields = ['estimate_number', 'user_id', 'client_id', 'tax_rate']
+    required_fields = ['estimate_number', 'user_id', 'client_id', 'tax_rate', 'total', 'tax_total', 'sub_total']
     for field in required_fields:
         if field is None:
             abort(400)
@@ -76,7 +76,10 @@ def save_estimate():
         client_id=request.json['client_id'],
         terms=request.json['terms'],
         note=request.json['note'],
-        tax_rate=request.json['tax_rate']
+        tax_rate=request.json['tax_rate'],
+        sub_total=request.json['sub_total'],
+        tax_total=request.json['tax_total'],
+        total=request.json['total']
     )
 
     # process line items
@@ -96,4 +99,4 @@ def save_estimate():
     db.session.add(estimate)
     db.session.commit()
 
-    return jsonify(estimate.as_dict()), 201
+    return jsonify({'success': 'estimate saved'}), 201
