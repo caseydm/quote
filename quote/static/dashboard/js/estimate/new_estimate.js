@@ -89,12 +89,13 @@ $(function() {
                 type : 'POST',
                 url : '/api/estimate',
                 data: JSON.stringify(jsonLoad),
-                contentType: 'application/json; charset=UTF-8',
-                success: function(response) {
-                    // Stop loading
-                    $( '#save' ).text('Saved!');
-                    l.stop();
-                }
+                contentType: 'application/json; charset=UTF-8'
+            })
+            .done( function(response) {
+                $( '#save' ).text('Saved!');
+            })
+            .always( function() {
+                l.stop();
             });
         }
     });

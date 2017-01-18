@@ -65,6 +65,11 @@ def save_estimate():
     if not request.json:
         abort(400)
 
+    required_fields = ['estimate_number', 'user_id', 'client_id', 'tax_rate']
+    for field in required_fields:
+        if field is None:
+            abort(400)
+
     estimate = Estimate(
         estimate_number=request.json['estimate_number'],
         user_id=request.json['user_id'],
