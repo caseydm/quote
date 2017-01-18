@@ -15,6 +15,9 @@ $(function() {
         note: null,
         terms: TERMS,
         tax_rate: 0,
+        subTotal: 0,
+        taxTotal: 0,
+        total: 0,
         items: [
             {
                 1 :
@@ -275,12 +278,18 @@ $(function() {
 
         // subTotal
         $('#subTotal').text( toCurrency( subTotal ) );
+        jsonLoad.subTotal = subTotal;
 
         // tax
         updateTaxDisplay( $('#taxField').editable('getValue').taxField );
+        jsonLoad.taxTotal = toNumber( $('#tax').text() );
 
         // total
-        $('#total').text( toCurrency ( subTotal + toNumber($('#tax').text() ) ));
+        var estimateTotal = subTotal + toNumber( $('#tax').text() );
+        $('#total').text( toCurrency ( subTotal + toNumber($('#tax').text() ) ) );
+        jsonLoad.total = estimateTotal;
+
+        console.log(jsonLoad);
     }
 
     // tax field
@@ -307,11 +316,15 @@ $(function() {
             $('#total').text( toCurrency ( toNumber( $('#subTotal').text() ) + toNumber($('#tax').text() ) ));
 
             jsonLoad.tax_rate = toNumber(newValue);
+
+            console.log(jsonLoad);
         }
     });
 
     function updateTaxDisplay(taxRate) {
         taxTotal = toNumber( $('#subTotal').text() ) * (taxRate / 100);
+        jsonLoad.taxTotal = taxTotal;
+        jsonLoad.total = taxTotal + toNumber( $('#subTotal').text() );
         $('#tax').text( toCurrency( taxTotal ) );
     }
 
