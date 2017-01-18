@@ -3,7 +3,7 @@ New Estimate page custom scripts
 **/  
 $(function() {
     
-    TERMS = 'Estimates are valid for 30 days from the date of issue. ' + 
+    var TERMS = 'Estimates are valid for 30 days from the date of issue. ' + 
             'Quotes are for the original job description as described by the client. ' + 
             'Any subsequent changes, whether made orally or in writing, may result in additional charges.';
 
