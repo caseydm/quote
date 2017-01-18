@@ -59,80 +59,25 @@
                 <tr>
                     <th>Estimate #</th>
                     <th>Client</th>
-                    <th>Description</th>
                     <th>Date</th>
                     <th>Total</th>
-                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><a href="#">001</a></td>
-                    <td>Gary Smith</td>
-                    <td>Wedding quote</td>
-                    <td>9/1/2016</td>
-                    <td>1,800.00</td>
-                    <td>Sent</td>
-                </tr>
-                <tr>
-                    <td><a href="#">002</a></td>
-                    <td>Gloria</td>
-                    <td>Family session</td>
-                    <td>9/3/2016</td>
-                    <td>830.00</td>
-                    <td>Draft</td>
-                </tr>
+                {% for estimate in estimates %}
+                    <tr>
+                        <td><a href="#">{{ estimate.estimate_number }}</a></td>
+                        <td>{{ estimate.client.fname }} {{ estimate.client.lname }}</td>
+                        <td>{{ estimate.date_of_issue.strftime('%A, %b %-d') }}</td>
+                        <td>1,800.00</td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
 <!-- /estimates panel -->
 
-<!-- Invoices panel -->
-<div class="panel panel-white">
-    <div class="panel-heading">
-        <h5 class="panel-title"><span class="text-semibold">Invoices</span></h5>
-        <div class="heading-elements">
-            <ul class="icons-list">
-                <li><a data-action="collapse"></a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Invoice #</th>
-                    <th>Client</th>
-                    <th>Description</th>
-                    <th>Date</th>
-                    <th>Total</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><a href="#">001</a></td>
-                    <td>Lisa Young</td>
-                    <td>Family Session</td>
-                    <td>8/15/2016</td>
-                    <td>1,100.00</td>
-                    <td>Sent</td>
-                </tr>
-                <tr>
-                    <td><a href="#">002</a></td>
-                    <td>Ken Smith</td>
-                    <td>Wedding</td>
-                    <td>9/12/2016</td>
-                    <td>2,100.00</td>
-                    <td>Draft</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<!-- /invoices panel -->
 
 <!-- modal form -->
 {% include 'dashboard/business_setup_modal.html' %}

@@ -5,6 +5,7 @@ from flask_security import login_required, current_user
 from .models import Category, Product, Duration, Circulation, \
     ImageSize, ImageLocation, Client
 from .forms import AddCategoryForm, AddClientForm
+from quote.estimate.models import Estimate
 from quote.security.models import User
 from quote.extensions import db
 
@@ -24,9 +25,14 @@ def build_category_dropdown(categories, depth=0):
 @blueprint.route('/dashboard')
 @login_required
 def index():
+    estimates = Estimate.query.filter_by(user_id=current_user.id).all()
     user = User.query.get(current_user.id)
     initial_setup = user.initial_setup
-    return render_template('dashboard/index.html', initial_setup=initial_setup)
+    return render_template(
+        'dashboard/index.html',
+        initial_setup=initial_setup,
+        estimates=estimates
+    )
 
 
 @blueprint.route('/dashboard/clients/new', methods=['GET', 'POST'])

@@ -18,6 +18,7 @@ class Estimate(db.Model):
     note = db.Column(db.Text, nullable=True)
     tax_rate = db.Column(db.Float, nullable=False)
     date_of_issue = db.Column(db.DateTime, default=datetime.datetime.utcnow, nullable=False)
+    client = db.relationship('Client')
 
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
