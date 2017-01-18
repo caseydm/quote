@@ -155,7 +155,6 @@ $(function() {
                     $("#" + element + i).text($("input[name=" + element + i + "]").val());
 
                     jsonLoad.note = $(this).val();
-                    console.log(jsonLoad);
 
                 } else if (element == 'description') {
                     $("#" + element + i).text($("input[name=" + element + i + "]").val());
@@ -288,8 +287,6 @@ $(function() {
         var estimateTotal = subTotal + toNumber( $('#tax').text() );
         $('#total').text( toCurrency ( subTotal + toNumber($('#tax').text() ) ) );
         jsonLoad.total = estimateTotal;
-
-        console.log(jsonLoad);
     }
 
     // tax field
@@ -316,8 +313,6 @@ $(function() {
             $('#total').text( toCurrency ( toNumber( $('#subTotal').text() ) + toNumber($('#tax').text() ) ));
 
             jsonLoad.tax_rate = toNumber(newValue);
-
-            console.log(jsonLoad);
         }
     });
 
