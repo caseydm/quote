@@ -93,6 +93,7 @@ $(function() {
             })
             .done( function(response) {
                 $( '#save' ).text('Saved!');
+                window.location.replace("/dashboard");
             })
             .always( function() {
                 l.stop();
