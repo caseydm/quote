@@ -22,6 +22,11 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), unique=True)
+    business_name = db.Column(db.String(255), nullable=True)
+    fname = db.Column(db.String(255), nullable=True)
+    lname = db.Column(db.String(255), nullable=True)
+    phone = db.Column(db.String(30), nullable=True)
+    initial_setup = db.Column(db.Boolean)
     password = db.Column(db.String(255))
     active = db.Column(db.Boolean())
     confirmed_at = db.Column(db.DateTime())

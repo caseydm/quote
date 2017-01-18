@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """Dashboard views"""
-from flask import Blueprint, render_template, redirect, url_for, flash
+from flask import Blueprint, render_template, redirect, url_for, flash, request, abort, jsonify
 from flask_security import login_required, current_user
 from .models import Category, Product, Duration, Circulation, \
     ImageSize, ImageLocation, Client
 from .forms import AddCategoryForm, AddClientForm
+from quote.security.models import User
 from quote.extensions import db
 
 blueprint = Blueprint('dashboard', __name__, static_folder='../static')
@@ -23,7 +24,9 @@ def build_category_dropdown(categories, depth=0):
 @blueprint.route('/dashboard')
 @login_required
 def index():
-    return render_template('dashboard/index.html')
+    user = User.query.get(current_user.id)
+    initial_setup = user.initial_setup
+    return render_template('dashboard/index.html', initial_setup=initial_setup)
 
 
 @blueprint.route('/dashboard/clients/new', methods=['GET', 'POST'])
@@ -96,3 +99,25 @@ def categories():
         image_location=image_location,
         form=form
     )
+
+
+@blueprint.route('/api/business_setup', methods=['POST'])
+@login_required
+def setup_business():
+    # validate data
+    if not request.json or request.json['fname'] == '':
+        abort(400)
+
+    user = User.query.get(current_user.id)
+
+    # edit user object
+    user.fname = request.json['fname']
+    user.lname = request.json['lname']
+    user.business_name = request.json['business_name']
+    user.phone = request.json['phone']
+    user.initial_setup = True
+
+    # save to database
+    db.session.commit()
+
+    return jsonify({'success': 'business info updated'}), 201

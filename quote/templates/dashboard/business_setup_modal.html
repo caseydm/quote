@@ -1,0 +1,43 @@
+<div id="business_setup_modal" class="modal fade" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Welcome! Save your business info to continue...</h5>
+            </div>
+
+            <form id="businessForm" method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input type="text" id="fname" name="fname" placeholder="First name" class="form-control" required="required" autofocus="autofocus">
+                                <label id="basic-error" class="validation-error-label" for="fname"></label>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <input type="text" id="lname" name="lname" placeholder="Last name" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input type="text" id="business_name" name="business_name" placeholder="Business Name" class="form-control">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <input type="text" id="phone" name="phone" placeholder="Phone number" data-mask="999-999-9999" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
