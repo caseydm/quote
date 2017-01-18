@@ -46,10 +46,16 @@
     <div class="panel-body no-padding-bottom">
         <div class="row">
             <div class="col-sm-6 content-group">
-                <h5>Katrina Meyer Photography</h5>
+                <h5>
+                    {% if current_user.business_name %}
+                        {{ current_user.business_name }}
+                    {% else %}
+                        {{ current_user.fname }} {{ current_user.lname }} 
+                    {% endif %}
+                </h5>
                 <ul class="list-condensed list-unstyled">
-                    <li>888-555-2311</li>
-                    <li>katrina@katrinameyer.com</li>
+                    <li>{{ current_user.phone }}</li>
+                    <li>{{ current_user.email }}</li>
                 </ul>
             </div>
 

@@ -20,7 +20,13 @@
             <li class="dropdown dropdown-user">
                 <a class="dropdown-toggle" data-toggle="dropdown">
                     <i class="icon-user position-left"></i>
-                    <span id="username"> {{ current_user.email }}</span>
+                    <span id="username">
+                    {% if current_user.fname %}
+                        {{ current_user.fname }}
+                    {% else %}
+                        {{ current_user.email }}
+                    {% endif %}
+                    </span>
                     <i class="caret"></i>
                 </a>
 
