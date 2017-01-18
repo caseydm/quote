@@ -21,13 +21,13 @@ def build_category_dropdown(categories, depth=0):
 
 
 def business_setup(user_id):
-    
+    pass
 
 
 @blueprint.route('/dashboard')
 @login_required
 def index():
-    business_setup()
+    business_setup(current_user)
     return render_template('dashboard/index.html')
 
 
