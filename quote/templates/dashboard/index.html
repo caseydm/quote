@@ -46,11 +46,6 @@
 <div class="panel panel-white">
     <div class="panel-heading">
         <h5 class="panel-title"><span class="text-semibold">Estimates</span></h5>
-        <div class="heading-elements">
-            <ul class="icons-list">
-                <li><a data-action="collapse"></a></li>
-            </ul>
-        </div>
     </div>
 
     <div class="table-responsive">
@@ -68,7 +63,7 @@
                     <tr>
                         <td><a href="#">{{ estimate.estimate_number }}</a></td>
                         <td>{{ estimate.client.fname }} {{ estimate.client.lname }}</td>
-                        <td>{{ estimate.date_of_issue.strftime('%A, %b %-d') }}</td>
+                        <td>{{ estimate.date_of_issue.strftime('%b %e, %Y') }}</td>
                         <td>1,800.00</td>
                     </tr>
                 {% endfor %}
