@@ -35,6 +35,19 @@ def new_estimate():
     )
 
 
+@blueprint.route('/dashboard/estimate/<id>')
+@login_required
+def view_estimate(id):
+    estimate = Estimate.query.filter_by(
+        user_id=current_user.id,
+        id=id
+    ).first_or_404()
+
+    return render_template(
+        'dashboard/estimate/view_estimate.html',
+        estimate=estimate)
+
+
 @blueprint.route('/api/client', methods=['POST'])
 @login_required
 def create_client():

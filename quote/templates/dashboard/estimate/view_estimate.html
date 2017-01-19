@@ -1,0 +1,133 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}New Estimate{% endblock %}
+
+<!-- Estimate JS files -->
+{% block head %}
+{% endblock %}
+<!-- End Estimate JS files -->
+
+{% block content %}
+<!-- Main content -->
+
+<!-- Estimates panel -->
+<div class="panel panel-white">
+    <div class="panel-heading">
+        <h3 class="panel-title">View Estimate</h3>
+        <div class="heading-elements">
+            <button id="print" type="button" class="btn btn-default btn-xlg heading-btn">Print</button>
+            <button type="button" id="save" class="btn btn-success btn-xlg heading-btn btn-ladda btn-ladda-spinner ladda-button" data-style="expand-left" data-spinner-color="#333" data-spinner-size="20">
+                <span class="ladda-label">Send</span>
+                <span class="ladda-spinner"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="panel-body no-padding-bottom">
+        <div class="row">
+            <div class="col-sm-6 content-group">
+                <h5>
+                    {% if current_user.business_name %}
+                        {{ current_user.business_name }}
+                    {% else %}
+                        {{ current_user.fname }} {{ current_user.lname }} 
+                    {% endif %}
+                </h5>
+                <ul class="list-condensed list-unstyled">
+                    <li>{{ current_user.phone }}</li>
+                    <li>{{ current_user.email }}</li>
+                </ul>
+            </div>
+
+            <div class="col-sm-6 content-group">
+                <div class="invoice-details">
+                    <h5 class="text-uppercase text-semibold">Estimate #{{ '{:04d}'.format(estimate.estimate_number) }}</h5>
+                    <ul class="list-condensed list-unstyled">
+                        <li>Date: <span class="text-semibold">{{ estimate.date_of_issue.strftime('%b %e, %Y') }}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-lg-9 content-group">
+                <span class="text-muted">For:</span><br/>
+                
+                <ul class="list-condensed list-unstyled">
+                    <h5><li id="client_name">{{ estimate.client.fname }} {{ estimate.client.lname }} </li></h5>
+                    <li id="client_phone">{{ estimate.client.phone }}</li>
+                    <li id="client_email">{{ estimate.client.email }}</li>
+                </ul>
+                <br/>
+                <span id="note1">{{ estimate.note }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table id="itemTable" class="table table-lg">
+            <thead>
+                <tr>
+                    <th class="col-sm-6">Description</th>
+                    <th class="col-sm-2">Rate</th>
+                    <th class="col-sm-1">Qty</th>
+                    <th class="col-sm-1">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in estimate.line_items %}
+                    <tr>
+                        <td>
+                            <h6 id="description" class="no-margin">{{ item.description }}</h6>
+                        </td>
+                        <td><span id="rate">{{ item.rate }}</span></td>
+                        <td><span id="qty">{{ item.qty }}</span></td>
+                        <td><span id="lineTotal" class="lineTotal text-semibold">{{ item.rate|float * item.qty|float }}</span></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel-body">
+        <div class="row invoice-payment">
+            <div class="col-sm-7">
+            </div>
+
+            <div class="col-sm-5">
+                <div class="content-group">
+                    <h6>Total</h6>
+                    <div class="table-responsive no-border">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>Subtotal:</th>
+                                    <td class="text-right"><span id="subTotal">{{ estimate.sub_total }}</span></td>
+                                </tr>
+                                <tr>
+                                    <th>Tax <span class="text-regular">{{ estimate.tax_rate }}%</span>:</th>
+                                    <td class="text-right"><span id="tax">{{ estimate.tax_total }}</span></td>
+                                </tr>
+                                <tr>
+                                    <th>Total:</th>
+                                    <td class="text-right text-primary"><h5 id="total" class="text-semibold">{{ estimate.total }}</h5></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        {% if estimate.terms %}
+        <h6>Estimate Terms</h6>
+        <p class="text-muted"><span id="terms">{{ estimate.terms }}</span></p>
+        {% endif %}
+    </div>
+</div>
+</form>
+<!-- /estimates panel -->
+
+<!-- /main content -->
+ {% endblock %}
