@@ -59,9 +59,9 @@ def create_client():
     client = Client(
         user_id=current_user.id,
         fname=request.json['fname'],
-        lname=request.json['lname'],
-        email=request.json['email'],
-        phone=request.json['phone'],
+        lname=request.json['lname'] or None,
+        email=request.json['email'] or None,
+        phone=request.json['phone'] or None,
     )
 
     # save to database

@@ -13,7 +13,7 @@
 <!-- Estimates panel -->
 <div class="panel panel-white">
     <div class="panel-heading">
-        <h3 class="panel-title">View Estimate</h3>
+        <h3 class="panel-title">Estimate</h3>
         <div class="heading-elements">
             <button id="print" type="button" class="btn btn-default btn-xlg heading-btn">Print</button>
             <button type="button" id="save" class="btn btn-success btn-xlg heading-btn btn-ladda btn-ladda-spinner ladda-button" data-style="expand-left" data-spinner-color="#333" data-spinner-size="20">
@@ -30,12 +30,12 @@
                     {% if current_user.business_name %}
                         {{ current_user.business_name }}
                     {% else %}
-                        {{ current_user.fname }} {{ current_user.lname }} 
+                        {{ current_user.fname }} {{ current_user.lname or ''}} 
                     {% endif %}
                 </h5>
                 <ul class="list-condensed list-unstyled">
-                    <li>{{ current_user.phone }}</li>
-                    <li>{{ current_user.email }}</li>
+                    <li>{{ current_user.phone or '' }}</li>
+                    <li>{{ current_user.email or '' }}</li>
                 </ul>
             </div>
 
@@ -54,12 +54,12 @@
                 <span class="text-muted">For:</span><br/>
                 
                 <ul class="list-condensed list-unstyled">
-                    <h5><li id="client_name">{{ estimate.client.fname }} {{ estimate.client.lname }} </li></h5>
-                    <li id="client_phone">{{ estimate.client.phone }}</li>
-                    <li id="client_email">{{ estimate.client.email }}</li>
+                    <h5><li id="client_name">{{ estimate.client.fname }} {{ estimate.client.lname or '' }} </li></h5>
+                    <li id="client_phone">{{ estimate.client.phone or '' }}</li>
+                    <li id="client_email">{{ estimate.client.email or '' }}</li>
                 </ul>
                 <br/>
-                <span id="note1">{{ estimate.note }}</span>
+                <span id="note1">{{ estimate.note or '' }}</span>
             </div>
         </div>
     </div>
@@ -82,7 +82,7 @@
                         </td>
                         <td><span id="rate">{{ item.rate }}</span></td>
                         <td><span id="qty">{{ item.qty }}</span></td>
-                        <td><span id="lineTotal" class="lineTotal text-semibold">{{ item.rate|float * item.qty|float }}</span></td>
+                        <td><span id="lineTotal" class="lineTotal text-semibold">{{ '{:20,.2f}'.format(item.rate|float * item.qty|float) }}</span></td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -102,15 +102,15 @@
                             <tbody>
                                 <tr>
                                     <th>Subtotal:</th>
-                                    <td class="text-right"><span id="subTotal">{{ estimate.sub_total }}</span></td>
+                                    <td class="text-right"><span id="subTotal">${{ '{:20,.2f}'.format(estimate.sub_total) }}</span></td>
                                 </tr>
                                 <tr>
                                     <th>Tax <span class="text-regular">{{ estimate.tax_rate }}%</span>:</th>
-                                    <td class="text-right"><span id="tax">{{ estimate.tax_total }}</span></td>
+                                    <td class="text-right"><span id="tax">${{ '{:20,.2f}'.format(estimate.tax_total) }}</span></td>
                                 </tr>
                                 <tr>
                                     <th>Total:</th>
-                                    <td class="text-right text-primary"><h5 id="total" class="text-semibold">{{ estimate.total }}</h5></td>
+                                    <td class="text-right text-primary"><h5 id="total" class="text-semibold">${{ '{:20,.2f}'.format(estimate.total) }}</h5></td>
                                 </tr>
                             </tbody>
                         </table>
