@@ -233,9 +233,9 @@ $(function() {
     });
 
     function addRow(i) {
-        var form = '<tr><td><input name="description' + i + '" type="text" required="true" placeholder="Enter an item name" class="form-control">' +
+        var form = '<tr><td><input name="description' + i + '" type="text" placeholder="Enter an item name" class="form-control">' +
                     '<h6 id="description' + i + '" class="no-margin"></h6></td><td>' +
-                    '<input name="rate' + i + '" type="text" required="true" placeholder="$0.00" class="form-control">' +
+                    '<input name="rate' + i + '" type="text" placeholder="$0.00" class="form-control">' +
                     '<span id="rate' + i + '"></span></td><td>' +
                     '<input name="qty' + i + '" type="text" class="form-control">' + 
                     '<span id="qty' + i + '">1</span></td><td><span id="lineTotal' + i + '" class="lineTotal text-semibold">$0.00</span></td></tr>'
