@@ -24,6 +24,11 @@
         }
     });
 </script>
+<style>
+.form-group {
+    margin-bottom: 5px;
+}
+</style>
 {% endblock %}
 <!-- End Estimate JS files -->
 
@@ -103,12 +108,32 @@
             <tbody>
                     <tr>
                         <td>
-                            <input name="description1" type="text" placeholder="Enter an item name" class="form-control">
-                            <h6 id="description1" class="no-margin"></h6>
+                            <div class="form-group description1">
+                                <input name="description1" type="text" placeholder="Enter an item name" class="form-control">
+                                <h6 id="description1" class="no-margin"></h6>
+                                <span class="help-block description1">&nbsp;</span>
+                            </div>
                         </td>
-                        <td><input name="rate1" type="text" placeholder="$0.00" class="form-control"><span id="rate1"></span></td>
-                        <td><input name="qty1" type="text" class="form-control"><span id="qty1">1</span></td>
-                        <td><span id="lineTotal1" class="lineTotal text-semibold">$0.00</span></td>
+                        <td>
+                            <div class="form-group rate1">
+                                <input name="rate1" type="text" placeholder="$0.00" class="form-control rate">
+                                 <span id="rate1"></span>
+                                <span class="help-block rate1">&nbsp;</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="qty1" type="text" class="form-control">
+                                <span id="qty1">1</span>
+                                <span class="help-block">&nbsp;</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <span id="lineTotal1" class="lineTotal text-semibold">$0.00</span>
+                                <span class="help-block">&nbsp;</span>
+                            </div>
+                        </td>
                     </tr>
             </tbody>
         </table>

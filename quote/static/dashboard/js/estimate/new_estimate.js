@@ -83,6 +83,8 @@ $(function() {
     $('#save').click(function () {
         if ( $('#add_client_link').css('display') != 'none') {
             $("[rel='tooltip']").tooltip('show');
+        } else if ( validate() === false ) {
+            // validation
         } else {
             // spinner button for save
             var l = Ladda.create(this);
@@ -103,6 +105,31 @@ $(function() {
             });
         }
     });
+
+    // validation function
+    function validate() {
+        var isValid = true;
+
+        for(var i = 1; i <= count; i++) {
+            if ( $("input[name=description" + i +  "]").val() === "" ) {
+                $('.help-block').show();
+                $('div.description' + i).addClass('has-error');
+                $('span.description' + i).text('This field is required');
+                $("input[name=description" + i +  "]").focus();
+                isValid = false;
+            }
+
+            if ( $("input[name=rate" + i +  "]").val() === "" ) {
+                $('.help-block').show();
+                $('div.rate' + i).addClass('has-error');
+                $('span.rate' + i).text('This field is required');
+                $("input[name=rate" + i +  "]").focus();
+                isValid = false;
+            }
+        }
+
+        return isValid;
+    }
 
     // cancel estimate form
     $('#cancel').click(function () {
@@ -127,6 +154,9 @@ $(function() {
     setQty(count);
     setTerms();
 
+    // hide validation helper blocks
+    $('.help-block').hide();
+
     // makes description and rate fields show and hide
     function setItemForm(element, i) {
         $("input[name=" + element + i +  "]").focusout(function() {
@@ -137,6 +167,10 @@ $(function() {
                 $("input[name=" + element + i + "]").hide();
                 // show text element
                 $("#" + element + i).show();
+
+                // hide validation
+                $('div.' + element + i).removeClass('has-error');
+                $('span.' + element + i).html('&nbsp;');
 
                 // set text element same as input
                 if(element == 'rate') {
@@ -233,12 +267,12 @@ $(function() {
     });
 
     function addRow(i) {
-        var form = '<tr><td><input name="description' + i + '" type="text" placeholder="Enter an item name" class="form-control">' +
-                    '<h6 id="description' + i + '" class="no-margin"></h6></td><td>' +
-                    '<input name="rate' + i + '" type="text" placeholder="$0.00" class="form-control">' +
-                    '<span id="rate' + i + '"></span></td><td>' +
-                    '<input name="qty' + i + '" type="text" class="form-control">' + 
-                    '<span id="qty' + i + '">1</span></td><td><span id="lineTotal' + i + '" class="lineTotal text-semibold">$0.00</span></td></tr>'
+        var form = '<tr><td><div class="form-group description' + i + '"><input name="description' + i + '" type="text" placeholder="Enter an item name" class="form-control">' +
+                    '<h6 id="description' + i + '" class="no-margin"></h6><span class="help-block description' + i + '">&nbsp;</span></div></td><td>' +
+                    '<div class="form-group rate' + i + '"><input name="rate' + i + '" type="text" placeholder="$0.00" class="form-control">' +
+                    '<span id="rate' + i + '"></span><span class="help-block rate' + i + '">&nbsp;</span></div></td><td>' +
+                    ' <div class="form-group"><input name="qty' + i + '" type="text" class="form-control">' + 
+                    '<span id="qty' + i + '">1</span><span class="help-block">&nbsp;</span></div></td><td><div class="form-group"><span id="lineTotal' + i + '" class="lineTotal text-semibold">$0.00</span><span class="help-block">&nbsp;</span></div></td></tr>';
 
         $('#itemTable tr:last').after(form);
 
@@ -250,6 +284,7 @@ $(function() {
         setItemForm('description', i);
         setItemForm('rate', i);
         setQty(i);
+        $('.help-block').hide();
     }
     /**
     Utilities
@@ -322,5 +357,8 @@ $(function() {
         jsonLoad.total = taxTotal + toNumber( $('#subTotal').text() );
         $('#tax').text( toCurrency( taxTotal ) );
     }
+
+    // validate
+
 
 });
