@@ -1,3 +1,23 @@
-<p>Home Page</p>
-<p><a href="{{ url_for_security('register') }}">Register for account</a>
-<p><a href="{{ url_for_security('login') }}">Log in</a>
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Quote App</title>
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+<div class="container">
+    <h4>Home Page</h4>
+    <p><a href="{{ url_for_security('register') }}">Register for account</a></p>
+    <p><a href="{{ url_for_security('login') }}">Log in</a></p>
+</div>
+</body>
+</html>
