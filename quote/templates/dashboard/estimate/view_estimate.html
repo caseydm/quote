@@ -82,7 +82,7 @@
                         </td>
                         <td><span id="rate">{{ item.rate }}</span></td>
                         <td><span id="qty">{{ item.qty }}</span></td>
-                        <td><span id="lineTotal" class="lineTotal text-semibold">{{ item.rate|float * item.qty|float }}</span></td>
+                        <td><span id="lineTotal" class="lineTotal text-semibold">{{ "${:,.2f}".format(item.rate|float * item.qty|float) }}</span></td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -102,15 +102,15 @@
                             <tbody>
                                 <tr>
                                     <th>Subtotal:</th>
-                                    <td class="text-right"><span id="subTotal">{{ estimate.sub_total }}</span></td>
+                                    <td class="text-right"><span id="subTotal">{{ "${:,.2f}".format(estimate.sub_total) }}</span></td>
                                 </tr>
                                 <tr>
                                     <th>Tax <span class="text-regular">{{ estimate.tax_rate }}%</span>:</th>
-                                    <td class="text-right"><span id="tax">{{ estimate.tax_total }}</span></td>
+                                    <td class="text-right"><span id="tax">{{ "${:,.2f}".format(estimate.tax_total) }}</span></td>
                                 </tr>
                                 <tr>
                                     <th>Total:</th>
-                                    <td class="text-right text-primary"><h5 id="total" class="text-semibold">{{ estimate.total }}</h5></td>
+                                    <td class="text-right text-primary"><h5 id="total" class="text-semibold">{{ "${:,.2f}".format(estimate.total) }}</h5></td>
                                 </tr>
                             </tbody>
                         </table>
