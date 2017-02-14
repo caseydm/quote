@@ -65,6 +65,12 @@ def products():
     return render_template('dashboard/products.html', products=products)
 
 
+@blueprint.route('/dashboard/support')
+@login_required
+def support():
+    return render_template('dashboard/support.html')
+
+
 @blueprint.route('/dashboard/categories', methods=['GET', 'POST'])
 @login_required
 def categories():
