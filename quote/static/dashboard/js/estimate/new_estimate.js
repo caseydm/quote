@@ -44,9 +44,9 @@ $(function() {
 
         var data = {
                 'fname': $('#fname').val(),
-                'lname': $('#lname').val(),
-                'email': $('#email').val(),
-                'phone': $('#phone').val(),
+                'lname': ($('#lname').val() === '' ? null : $('#lname').val()),
+                'email': ($('#email').val() === '' ? null : $('#email').val()), 
+                'phone': ($('#phone').val() === '' ? null : $('#phone').val()),
             };
 
         $.ajax({
@@ -63,7 +63,7 @@ $(function() {
                 document.getElementById("clientForm").reset();
                 
                 // display client data on page
-                $("#client_name").text(data.fname + ' ' + data.lname);
+                $("#client_name").text(data.fname + ' ' + (data.lname || ""));
                 $("#client_phone").text(data.phone);
                 $("#client_email").text(data.email);
 

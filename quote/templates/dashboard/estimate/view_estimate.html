@@ -54,12 +54,12 @@
                 <span class="text-muted">For:</span><br/>
                 
                 <ul class="list-condensed list-unstyled">
-                    <h5><li id="client_name">{{ estimate.client.fname }} {{ estimate.client.lname }} </li></h5>
-                    <li id="client_phone">{{ estimate.client.phone }}</li>
-                    <li id="client_email">{{ estimate.client.email }}</li>
+                    <h5><li id="client_name">{{ estimate.client.fname }} {% if estimate.client.lname %} {{ estimate.client.lname }}{% endif %} </li></h5>
+                    <li id="client_phone">{% if estimate.client.phone %}{{ estimate.client.phone }}{% endif %}</li>
+                    <li id="client_email">{% if estimate.client.email %}{{ estimate.client.email }}{% endif %}</li>
                 </ul>
                 <br/>
-                <span id="note1">{{ estimate.note }}</span>
+                <span id="note1">{% if estimate.note %}{{ estimate.note }}{% endif %}</span>
             </div>
         </div>
     </div>
